@@ -1,8 +1,6 @@
 const hooks = require('hooks');
 const fs = require('fs');
 const Multipart = require('multi-part'); //npm install multi-part --save
-const async = require('async');
-
 const streamToString = require('stream-to-string');
 const PropertiesReader = require('properties-reader');  //npm install properties-reader --save
 var properties = new PropertiesReader('./Prescript/development.properties');
