@@ -1041,18 +1041,9 @@ hooks.before("Issue > Fetch Executions For Issue > Get List", function (transact
 // ********************** Attachment **********************
 // ********************************************************
 
-hooks.before("Attachment > Upload File > Upload", async function (transaction, done) {
+hooks.before("Attachment > Upload File > Upload", function (transaction) {
   hooks.log("before Attachment > Upload File > Upload");
-  const form = new Multipart();
-   hooks.log("before Attachment > Upload File > Upload 1");
-  form.append('file', fs.createReadStream(demoFileForAttachment));
-  hooks.log("before Attachment > Upload File > Upload 2");
-  transaction.request.body = streamToString(form.getStream());
-  hooks.log("before Attachment > Upload File > Upload 3");
-  transaction.request.headers['Content-Type'] = form.getHeaders()['content-type'];
-  hooks.log("before Attachment > Upload File > Upload 4");
-  done();
-  hooks.log("before Attachment > Upload File > Upload 5");
+  
 });
 
 hooks.after("Attachment > Upload File > Upload", function (transaction) {
