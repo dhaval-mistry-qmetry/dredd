@@ -1,0 +1,3877 @@
+FORMAT: 1A
+
+HOST: https://newuiqa.qmetry.com
+
+# QTM APIs
+QMetry Open APIs.
+
+# Group Project
+## Create [/rest/admin/project]
+### Create [POST]
+API to create project
+
+**Request Body Insight**
+
+| Parameters|Description|Required|
+|-----------|:---------|:-------|
+|project|Project parameters - Refer JSON Schema|Yes|
+|release|Release parameters - Refer JSON Schema|Yes|
+|cycle|Cycle parameters - Refer JSON Schema|Yes|
+
++ Request
+    + Headers
+
+            content-type: application/json
+            apikey: <Generated Open API key>
+            project: <project>
+
+    + Body
+
+            {
+                "project": {
+                    "isAutoAddValue": true,
+                    "approvalWorkflow": false,
+                    "name": "Qmetry",
+                    "projectKey": "QME",
+                    "description": "Qmetry Project",
+                    "isRichText": true
+                },
+                "release": {
+                    "name": "Default Release",
+                    "description": ""
+                },
+                "cycle": {
+                    "name": "Default Cycle",
+                    "isLocked": false,
+                    "isArchived": false
+                },
+                "isStarter": false,
+                "addLdapUser": false
+            }
+
+    + Schema
+
+             "ProjectParams" : {
+                  "type" : "object",
+                  "required": [
+                    "isAutoAddValue",
+                    "approvalWorkflow",
+                    "name",
+                    "projectKey"
+                  ],
+                  "properties" : {
+                      "isAutoAddValue": {
+                        "type": "boolean",
+                        "title": "The Isautoaddvalue Schema",
+                        "default": false,
+                        "examples": [
+                          true
+                        ]
+                      },
+                      "approvalWorkflow": {
+                        "type": "boolean",
+                        "title": "The Approvalworkflow Schema",
+                        "default": false,
+                        "examples": [
+                          true
+                        ]
+                      },
+                      "name": {
+                        "type": "string",
+                        "title": "The Name Schema",
+                        "default": "",
+                        "examples": [
+                          "Qmetry"
+                        ],
+                        "pattern": "^(.*)$"
+                      },
+                      "projectKey": {
+                        "type": "string",
+                        "title": "The Projectkey Schema",
+                        "default": "",
+                        "examples": [
+                          "QME"
+                        ],
+                        "pattern": "^(.*)$"
+                      },
+                      "description": {
+                        "type": "string",
+                        "title": "The Description Schema",
+                        "default": "",
+                        "examples": [
+                          "Qmetry Project"
+                        ],
+                        "pattern": "^(.*)$"
+                      },
+                      "isRichText": {
+                        "type": "boolean",
+                        "title": "The Isrichtext Schema",
+                        "default": false,
+                        "examples": [
+                          true
+                        ]
+                      }
+                    }
+                },
+             "ReleaseParams" : {
+                  "type" : "object",
+                  "required" : [ "name" ],
+                  "properties" : {
+                    "name" : {
+                      "type" : "string",
+                      "position" : 1,
+                      "description" : "Name of Release"
+                    },
+                    "description" : {
+                      "type" : "string",
+                      "position" : 2,
+                      "description" : "An explanation for the release."
+                    }
+                  }
+                },
+              "CycleParams" : {
+                  "type": "object",
+                  "required": [
+                    "name"
+                  ],
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "position": 1,
+                      "description": "Name of Cycle"
+                    }
+                  }
+                }
+
++ Response 200
+
+    + Body
+
+            {
+                "success": true,
+                "code": "AD.PROJECT_SUCCESSFUL",
+                "message": "Project (Qmetry) added successfully.",
+                "data": [
+                    {
+                        "projectID": 6030,
+                        "releaseID": 12784,
+                        "cycleID": 19523,
+                        "project_Name": "Qmetry"
+                    }
+                ]
+            }
+
++ Response 400
+
+    + Body
+
+            {
+                "success": false,
+                "code": "CO.GENERAL_EXCEPTION"
+            }
+
++ Response 401
+
+    + Body
+
+            {"success":false,"code":"CO.INVALID_API_KEY"}
+
++ Response 500
+
+    + Body
+
+            {
+                "success": false,
+                "code": "CO.GENERAL_EXCEPTION"
+            }
+
+## Create [/rest/admin/project]
+### CreateArchive [POST]
+API to create project
+
+**Request Body Insight**
+
+| Parameters|Description|Required|
+|-----------|:---------|:-------|
+|project|Project parameters - Refer JSON Schema|Yes|
+|release|Release parameters - Refer JSON Schema|Yes|
+|cycle|Cycle parameters - Refer JSON Schema|Yes|
+
++ Request
+    + Headers
+
+            content-type: application/json
+            apikey: <Generated Open API key>
+            project: <project>
+
+    + Body
+
+            {
+                "project": {
+                    "isAutoAddValue": true,
+                    "approvalWorkflow": true,
+                    "name": "Qmetry",
+                    "projectKey": "QME",
+                    "description": "Qmetry Project",
+                    "isRichText": true
+                },
+                "release": {
+                    "name": "Default Release",
+                    "description": ""
+                },
+                "cycle": {
+                    "name": "Default Cycle",
+                    "isLocked": false,
+                    "isArchived": false
+                },
+                "isStarter": false,
+                "addLdapUser": false
+            }
+
+    + Schema
+
+             "ProjectParams" : {
+                  "type" : "object",
+                  "required": [
+                    "isAutoAddValue",
+                    "approvalWorkflow",
+                    "name",
+                    "projectKey"
+                  ],
+                  "properties" : {
+                      "isAutoAddValue": {
+                        "type": "boolean",
+                        "title": "The Isautoaddvalue Schema",
+                        "default": false,
+                        "examples": [
+                          true
+                        ]
+                      },
+                      "approvalWorkflow": {
+                        "type": "boolean",
+                        "title": "The Approvalworkflow Schema",
+                        "default": false,
+                        "examples": [
+                          true
+                        ]
+                      },
+                      "name": {
+                        "type": "string",
+                        "title": "The Name Schema",
+                        "default": "",
+                        "examples": [
+                          "Qmetry"
+                        ],
+                        "pattern": "^(.*)$"
+                      },
+                      "projectKey": {
+                        "type": "string",
+                        "title": "The Projectkey Schema",
+                        "default": "",
+                        "examples": [
+                          "QME"
+                        ],
+                        "pattern": "^(.*)$"
+                      },
+                      "description": {
+                        "type": "string",
+                        "title": "The Description Schema",
+                        "default": "",
+                        "examples": [
+                          "Qmetry Project"
+                        ],
+                        "pattern": "^(.*)$"
+                      },
+                      "isRichText": {
+                        "type": "boolean",
+                        "title": "The Isrichtext Schema",
+                        "default": false,
+                        "examples": [
+                          true
+                        ]
+                      }
+                    }
+                },
+             "ReleaseParams" : {
+                  "type" : "object",
+                  "required" : [ "name" ],
+                  "properties" : {
+                    "name" : {
+                      "type" : "string",
+                      "position" : 1,
+                      "description" : "Name of Release"
+                    },
+                    "description" : {
+                      "type" : "string",
+                      "position" : 2,
+                      "description" : "An explanation for the release."
+                    }
+                  }
+                },
+              "CycleParams" : {
+                  "type": "object",
+                  "required": [
+                    "name"
+                  ],
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "position": 1,
+                      "description": "Name of Cycle"
+                    }
+                  }
+                }
+
++ Response 200
+
+    + Body
+
+            {
+                "success": true,
+                "code": "AD.PROJECT_SUCCESSFUL",
+                "message": "Project (Qmetry) added successfully.",
+                "data": [
+                    {
+                        "projectID": 6030,
+                        "releaseID": 12784,
+                        "cycleID": 19523,
+                        "project_Name": "Qmetry"
+                    }
+                ]
+            }
+
++ Response 400
+
+    + Body
+
+            {
+                "success": false,
+                "code": "CO.GENERAL_EXCEPTION"
+            }
+
++ Response 401
+
+    + Body
+
+            {"success":false,"code":"CO.INVALID_API_KEY"}
+
++ Response 500
+
+    + Body
+
+            {
+                "success": false,
+                "code": "CO.GENERAL_EXCEPTION"
+            }            
+
+# Group Admin
+
+## Get Info service [/rest/admin/project/getinfo]
+### Get Info [GET]
+provides all the basic information of the project like scope, types of -bugs, license details.
+
++ Request
+    + Headers
+
+            content-type: application/json
+            apikey: <Generated Open API key>
+            project: <project>
+
+    + Body
+
++ Response 200
+
+    + Body
+
+            {"clientData":{"localeID":1,"timeZoneID":18,"dateTimeFormatID":1,"ldapActive":false,"SAMLActive":false,"authTypeArray":["QMETRY"],"isAllowManualEditOfLastExecutedField":"false","maxpagelimit":"50","saveexecutionhistory":"true","timesettings":"12"},"componentListID":1,"locale":"en","roleID":1,"roleName":"Admin","allowEditRecordData":true,"allowEditPublicView":true,"version":"8.5.2","supportEmail":"temp@dsf.com","isAwsDeployment":true,"disabledRoleRights":{"REQUIREMENT":["EXECUTE"],"TESTSUITE":["VERSIONING"],"EXECUTIONS":["VERSIONING"],"ISSUE":["EXECUTE","VERSIONING"]},"automationFrameworks":[{"buildFrameworks":[{"key":"MAVEN","value":"Maven"},{"key":"GRADLE","value":"Gradle"},{"key":"ANT","value":"Ant"}],"key":"CUCUMBER","value":"Cucumber"},{"buildFrameworks":[{"key":"MAVEN","value":"Maven"},{"key":"GRADLE","value":"Gradle"},{"key":"ANT","value":"Ant"}],"key":"JUNIT","value":"Junit"},{"buildFrameworks":[{"key":"MAVEN","value":"Maven"},{"key":"GRADLE","value":"Gradle"},{"key":"ANT","value":"Ant"}],"key":"TESTNG","value":"TestNG"},{"buildFrameworks":[{"key":"MAVEN","value":"Maven"},{"key":"ANT","value":"Ant"}],"key":"QAS","value":"QAF"},{"buildFrameworks":[{"key":"NONE","value":"None"}],"key":"HPUFT","value":"HP UFT"}],"logiServerUrl":"https://logidev.qmetry.com/QMetryReport","feedbackURL":"https://qmetrysupport.atlassian.net/servicedesk/customer/portal/6/group/-1","isLocked":false,"isBuildLOcked":false,"isReleaseLocked":false,"isProjectLocked":false,"currentReleaseId":5113,"currentBuildId":10798,"currentProjectId":2158,"richText":false,"currentProjectName":"Sample","currentReleaseName":"Default Release","currentBuildName":"Default Cycle","isDropMandatory":false,"allstatus":[{"name":"Blocked","defaultName":"blocked","id":14764,"color":"#CCCCCC|#FFFFFF","image":"co-blocked-ico","isArchived":false,"filtername":"blocked","isdefault":false},{"name":"Failed","defaultName":"failed","id":14769,"color":"#FF6666|#FFFFFF","image":"co-failed-ico","isArchived":false,"filtername":"failed","isdefault":false},{"name":"Not Run","defaultName":"notrun","id":14765,"color":"#205081|#FFFFFF","image":"co-notrun-ico","isArchived":false,"filtername":"notrun","isdefault":true},{"name":"Passed","defaultName":"passed","id":14767,"color":"#14892C|#FFFFFF","image":"co-passed-ico","isArchived":false,"filtername":"passed","isdefault":false},{"name":"Not Applicable","defaultName":"empty","id":14766,"color":"#59AFE1|#FFFFFF","image":"co-empty-ico","isArchived":false,"filtername":"empty","isdefault":false}],"projects":[{"projectID":2158,"name":"Sample","projectKey":"SAM","isArchive":false,"releases":[{"releaseID":5113,"name":"Default Release","isArchive":false,"startDate":"","builds":[{"buildID":10798,"name":"Default Cycle","isArchive":false}]}],"drops":[]}],"rootFolders":{"TC":{"id":102721,"name":"Sample"},"RQ":{"id":15776,"name":"Sample"},"TS":{"id":95552,"name":"Sample"}},"customListObjs":{"component":[{"id":277141.0,"name":"Not Available","uniqueLabel":"Not Available","isArchived":false}],"issuePriority":[{"id":277106,"name":"Blocker","uniqueLabel":"Blocker","isArchived":false},{"id":277107,"name":"Critical","uniqueLabel":"Critical","isArchived":false},{"id":277108,"name":"Major","uniqueLabel":"Major","isArchived":false},{"id":277109,"name":"Minor","uniqueLabel":"Minor","isArchived":false},{"id":277110,"name":"Trivial","uniqueLabel":"Trivial","isArchived":false}],"issueState":[{"id":277111,"name":"Open","uniqueLabel":"Open","isArchived":false},{"id":277112,"name":"Reopened","uniqueLabel":"Reopened","isArchived":false},{"id":277113,"name":"Resolved","uniqueLabel":"Resolved","isArchived":false},{"id":277114,"name":"Closed","uniqueLabel":"Closed","isArchived":false}],"issueType":[{"id":277103,"name":"Bug","uniqueLabel":"Bug","isArchived":false,"igConfigurationID":"0"},{"id":277104,"name":"Enhancement","uniqueLabel":"Enhancement","isArchived":false,"igConfigurationID":"0"},{"id":277105,"name":"New Feature","uniqueLabel":"New Feature","isArchived":false,"igConfigurationID":"0"}],"modifiedReason":[{"id":277090,"name":"Functional Change","uniqueLabel":"Functional Change","isArchived":false},{"id":277091,"name":"Bug Fix","uniqueLabel":"Bug Fix","isArchived":false}],"priority":[{"id":277081,"name":"Blocker","uniqueLabel":"Blocker","isArchived":false},{"id":277082,"name":"Critical","uniqueLabel":"Critical","isArchived":false},{"id":277083,"name":"Major","uniqueLabel":"Major","isArchived":false},{"id":277123,"name":"Minor","uniqueLabel":"Minor","isArchived":false},{"id":277124,"name":"Trivial","uniqueLabel":"Trivial","isArchived":false}],"requirementState":[{"id":277098,"name":"New","uniqueLabel":"New","isArchived":false},{"id":277100,"name":"Open","uniqueLabel":"Open","isArchived":false},{"id":277099,"name":"On Hold","uniqueLabel":"On Hold","isArchived":false},{"id":277128,"name":"Rejected","uniqueLabel":"Rejected","isArchived":false},{"id":277129,"name":"Requires Rework","uniqueLabel":"Requires Rework","isArchived":false},{"id":277130,"name":"In Progress","uniqueLabel":"In Progress","isArchived":false},{"id":277131,"name":"Review Pending","uniqueLabel":"Review Pending","isArchived":false},{"id":277132,"name":"Approved","uniqueLabel":"Approved","isArchived":false}],"resolution":[{"id":277115,"name":"Unresolved","uniqueLabel":"Unresolved","isArchived":false},{"id":277116,"name":"Fixed","uniqueLabel":"Fixed","isArchived":false},{"id":277117,"name":"Won't Fix","uniqueLabel":"Won't Fix","isArchived":false},{"id":277118,"name":"Duplicate","uniqueLabel":"Duplicate","isArchived":false},{"id":277119,"name":"Incomplete","uniqueLabel":"Incomplete","isArchived":false},{"id":277120,"name":"Cannot reproduce","uniqueLabel":"Cannot Reproduce","isArchived":false},{"id":277121,"name":"Not A Bug","uniqueLabel":"Not A Bug","isArchived":false},{"id":277122,"name":"Technical Limitation","uniqueLabel":"Technical Limitation","isArchived":false}],"testCaseState":[{"id":277084,"name":"New","uniqueLabel":"New","isArchived":false},{"id":277087,"name":"Open","uniqueLabel":"Open","isArchived":false},{"id":277086,"name":"On Hold","uniqueLabel":"On Hold","isArchived":false},{"id":277085,"name":"Rejected","uniqueLabel":"Rejected","isArchived":false},{"id":277125,"name":"Requires Rework","uniqueLabel":"Requires Rework","isArchived":false},{"id":277126,"name":"In Progress","uniqueLabel":"In Progress","isArchived":false},{"id":277127,"name":"Review Pending","uniqueLabel":"Review Pending","isArchived":false},{"id":277142,"name":"Closed","uniqueLabel":"Closed","isArchived":false}],"testCaseType":[{"id":277092,"name":"BVT","uniqueLabel":"BVT","isArchived":false},{"id":277095,"name":"Functional","uniqueLabel":"Functional","isArchived":false},{"id":277096,"name":"Performance","uniqueLabel":"Performance","isArchived":false},{"id":277094,"name":"Regression","uniqueLabel":"Regression","isArchived":false},{"id":277097,"name":"Security","uniqueLabel":"Security","isArchived":false},{"id":277093,"name":"UI","uniqueLabel":"UI","isArchived":false}],"testingType":[{"id":277088,"name":"Manual","uniqueLabel":"Manual","isArchived":false},{"id":277089,"name":"Automated","uniqueLabel":"Automated","isArchived":false}],"testRunStatus":[{"id":277139,"name":"Complete","uniqueLabel":"Complete","isArchived":false},{"id":277140,"name":"Incomplete","uniqueLabel":"Incomplete","isArchived":false}],"testSuiteState":[{"id":277101,"name":"New","uniqueLabel":"New","isArchived":false},{"id":277102,"name":"Open","uniqueLabel":"Open","isArchived":false},{"id":277133,"name":"On Hold","uniqueLabel":"On Hold","isArchived":false},{"id":277134,"name":"Rejected","uniqueLabel":"Rejected","isArchived":false},{"id":277135,"name":"Requires Rework","uniqueLabel":"Requires Rework","isArchived":false},{"id":277136,"name":"In Progress","uniqueLabel":"In Progress","isArchived":false},{"id":277137,"name":"Review Pending","uniqueLabel":"Review Pending","isArchived":false},{"id":277138,"name":"Approved","uniqueLabel":"Approved","isArchived":false}],"users":[{"id":277144,"name":"admin","uniqueLabel":"admin","isArchived":false},{"id":277143,"name":"Dhaval","uniqueLabel":"Dhaval","isArchived":false}],"qmRightsRQ":[{"id":"1","name":"admin","igConfigurationID":"0","isActive":true},{"id":"2547","name":"Dhaval","igConfigurationID":"0","isActive":true}],"qmRightsRQF":[],"qmRightsTC":[{"id":"1","name":"admin","igConfigurationID":"0","isActive":true},{"id":"2547","name":"Dhaval","igConfigurationID":"0","isActive":true}],"qmRightsTCF":[],"qmRightsTCS":[],"qmRightsTS":[{"id":"1","name":"admin","igConfigurationID":"0","isActive":true},{"id":"2547","name":"Dhaval","igConfigurationID":"0","isActive":true}],"qmRightsTSF":[],"qmRightsTP":[],"qmRightsTPS":[],"qmRightsIS":[{"id":"1","name":"admin","igConfigurationID":"0","isActive":true},{"id":"2547","name":"Dhaval","igConfigurationID":"0","isActive":true}],"qmRightsAD":[],"qmRightsRP":[],"qmRightsCO":[],"qmRightsDH":[],"user":[{"id":"1","name":"admin","igConfigurationID":"0","isActive":true},{"id":"2547","name":"Dhaval","igConfigurationID":"0","isActive":true}],"owner":[{"id":"1","name":"admin","igConfigurationID":"0","isActive":true},{"id":"2547","name":"Dhaval","igConfigurationID":"0","isActive":true}]},"integrationsystems":[[2,"Bugzilla"],[3,"FogBugz"],[4,"Jira"],[6,"Rally"]],"integrationversions":{"2":[],"3":[],"4":[],"6":[]},"modules":[{"entityTypeID":"1","entityTypeName":"REQUIREMENT"},{"entityTypeID":"3","entityTypeName":"TESTCASE"},{"entityTypeID":"6","entityTypeName":"TESTSUITE"},{"entityTypeID":"11","entityTypeName":"ISSUE"},{"entityTypeID":"12","entityTypeName":"ADMIN"},{"entityTypeID":"13","entityTypeName":"REPORT"},{"entityTypeID":"14","entityTypeName":"COMMON"},{"entityTypeID":"15","entityTypeName":"DASHBOARD"}],"currentUserRoleRights":{"US":{"USER":{"VIEW":true,"MODIFY":true}},"ROLE":{"ROLE":{"VIEW":true,"MODIFY":true}},"PROJ":{"PROJECT":{"VIEW":true,"MODIFY":true}},"BILD":{"BUILD":{"VIEW":true,"MODIFY":true}},"PL":{"PLATFORM":{"VIEW":true,"MODIFY":true}},"LABEL":{"LABEL":{"VIEW":true,"MODIFY":true}},"INT":{"INTEGRATION":{"VIEW":true,"MODIFY":true}},"AUTO":{"AUTOMATION":{"VIEW":true,"MODIFY":true}},"RP":{"REPORT":{"VIEW":true,"MODIFY":true}},"NOTI":{"NOTIFICATION":{"VIEW":true,"MODIFY":true}},"CUST":{"CUSTOMIZATION":{"VIEW":true,"MODIFY":true}},"LOCAL":{"LOCALIZATION":{"VIEW":true,"MODIFY":true}},"RQ":{"REQUIREMENT":{"VIEW":true,"MODIFY":true,"CREATE":true,"DELETE":true,"EXECUTE":true,"IMPORT":true,"EXPORT":true,"LINK":true,"COPY":true,"VERSIONING":true}},"TC":{"TESTCASE":{"VIEW":true,"MODIFY":true,"CREATE":true,"DELETE":true,"EXECUTE":true,"IMPORT":true,"EXPORT":true,"LINK":true,"COPY":true,"VERSIONING":true}},"TS":{"TESTSUITE":{"VIEW":true,"MODIFY":true,"CREATE":true,"DELETE":true,"EXECUTE":true,"IMPORT":true,"EXPORT":true,"LINK":true,"COPY":true,"VERSIONING":true}},"IS":{"ISSUE":{"VIEW":true,"MODIFY":true,"CREATE":true,"DELETE":true,"EXECUTE":true,"IMPORT":true,"EXPORT":true,"LINK":true,"COPY":true,"VERSIONING":true}},"VA":{"VISUAL_ANALYSIS":{"VIEW":true,"MODIFY":true}},"AC":{"AUDIT_COMPLIANCE":{"VIEW":true,"MODIFY":true}},"TDP":{"TEST_DATA_PARAMETERIZATION":{"VIEW":true,"MODIFY":true}},"ET":{"EXPLORATORY_TESTING":{"VIEW":true,"MODIFY":true}},"JIRA_INT":{"JIRA_INTEGRATION":{"VIEW":true,"MODIFY":true}}},"userRoleRights":{"TS":{"SHOW":{"ALLOW":true},"IMPORT":{"ALLOW":true},"EXPORT":{"ALLOW":true},"LINKPLATFORM":{"ALLOW":true},"COPY_TO_SCOPE":{"ALLOW":true},"COPY_FROM_SCOPE":{"ALLOW":true},"TESTSUITE":{"VIEW":true,"CREATE":true,"EDIT":true,"DELETE":true,"EXECUTE":true},"TESTSUITEFOLDER":{"CREATE":true,"EDIT":true,"DELETE":true},"TESTSUITE_RUN":{"VIEW":true,"CREATE":true,"DELETE":true}},"RQ":{"SHOW":{"ALLOW":true},"ADD_TO_SCOPE":{"ALLOW":true},"REMOVE_FROM_SCOPE":{"ALLOW":true},"IMPORT":{"ALLOW":true},"EXPORT":{"ALLOW":true},"UPDATE_WITHOUT_VERSION":{"ALLOW":true},"REQUIREMENT":{"VIEW":true,"CREATE":true,"EDIT":true,"DELETE":true,"EXECUTE":true},"REQUIREMENTFOLDER":{"CREATE":true,"EDIT":true,"DELETE":true,"EXECUTE":true},"ASSIGN_DEFECTS_TO_REQUIREMENT":{"VIEW":true,"CREATE":true,"EDIT":true,"DELETE":true}},"IS":{"SHOW":{"ALLOW":true},"IMPORT":{"ALLOW":true},"EXPORT":{"ALLOW":true},"ISSUE":{"VIEW":true,"CREATE":true,"EDIT":true,"DELETE":true}},"AD":{"SHOW":{"ALLOW":true},"AUTOMATIONAGENT":{"ALLOW":true},"ASSIGNROLETOUSER":{"ALLOW":true},"NOMENCLATURE":{"ALLOW":true},"SYSTEM_ADMIN_PERMISSIONS":{"ALLOW":true},"CHANGE_GRID_COLUMN_LAYOUT":{"ALLOW":true},"SET_DEFAULT_DROP":{"ALLOW":true},"DASHBOARD_ADMIN":{"ALLOW":true},"ADMIN":{},"IMPORT_EXPORT":{"ALLOW":true},"CUSTOMLIST":{},"USER":{"VIEW":true,"CREATE":true,"EDIT":true,"DELETE":true},"STATUS_MANAGEMENT":{"VIEW":true,"CREATE":true,"EDIT":true,"DELETE":true},"FIELD_LAYOUT_MANAGEMENT":{"VIEW":true,"CREATE":true,"EDIT":true,"DELETE":true},"INTEGRATION":{"VIEW":true,"CREATE":true,"EDIT":true,"DELETE":true},"BUILD":{"VIEW":true,"CREATE":true,"EDIT":true,"DELETE":true},"MANAGE_DOMAIN":{"ALLOW":true},"PRODUCT":{"DELETE":true},"MANAGE_RELEASE":{"ALLOW":true},"RELEASE":{"DELETE":true},"MANAGE_CYCLE":{"ALLOW":true},"CYCLE":{"DELETE":true},"MANAGE_PLATFORM":{"VIEW":true,"CREATE":true,"EDIT":true,"DELETE":true},"MANAGE_PLATFORM_GROUP":{"CREATE":true,"EDIT":true}},"TC":{"SHOW":{"ALLOW":true},"ADD_TO_SCOPE":{"ALLOW":true},"REMOVE_FROM_SCOPE":{"ALLOW":true},"IMPORT":{"ALLOW":true},"EXPORT":{"ALLOW":true},"UPDATE_WITHOUT_VERSION":{"ALLOW":true},"RESET_TESTCASE_STATUS_TO_NOTRUN":{"ALLOW":true},"COPY_OF_TESTCASE":{"ALLOW":true},"TESTCASE":{"VIEW":true,"CREATE":true,"EDIT":true,"DELETE":true,"EXECUTE":true},"TESTCASESTEP":{"CREATE":true,"EDIT":true,"DELETE":true},"TESTCASEFOLDER":{"CREATE":true,"EDIT":true,"DELETE":true,"EXECUTE":true},"TESTDATA_IMPORT":{"ALLOW":true},"TASTDATA_EXPORT":{"ALLOW":true},"TEST_DATA":{"VIEW":true,"CREATE":true,"EDIT":true,"DELETE":true}},"SYS":{"DEFAULT_SETTINGS":{"ALLOW":true},"SMTP_SETTINGS":{"ALLOW":true},"LOGIN_PAGE":{"ALLOW":true},"GENERAL_SETTINGS":{"ALLOW":true},"LDAP_CONFIG":{"ALLOW":true},"ATTACHMENT_SETTINGS":{"ALLOW":true},"NOTIFICATION_SETTINGS":{"ALLOW":true},"ROLE":{"ALLOW":true},"SYSTEM":{}},"RP":{"SHOW":{"ALLOW":true},"ADMIN_QUERY":{"ALLOW":true},"EXPORT":{"ALLOW":true},"CROSS_DOMAIN_QUERY":{"ALLOW":true},"REPORT":{"VIEW":true,"CREATE":true,"EDIT":true,"DELETE":true},"QUERY":{"VIEW":true,"CREATE":true,"EDIT":true,"DELETE":true},"QUERY_EXPORT":{"ALLOW":true},"QUERY_CONFIGURATION_MANAGEMENT":{"VIEW":true,"CREATE":true,"EDIT":true,"DELETE":true}},"EXEC":{"Blocked":{"ALLOW":true},"Failed":{"ALLOW":true},"Not Run":{"ALLOW":true},"Passed":{"ALLOW":true},"Not Applicable":{"ALLOW":true}},"TK":{}},"maxAttachmentSize":10,"agentUrl":"https://s3.amazonaws.com/qprof-automationagent/qmetryagent/QMetryAgent_8.5.2.zip","clientCode":"1231JK","isMatrixViewEnabled":true,"isPlatformScopeFeatureEnabled":true,"isSyncAcrossDomainEnabled":false,"isTestDataEnabled":false,"isTestCaseApprover":false,"isTestSuiteApprover":false,"isApprovalWorkflowEnabled":false,"userType":1,"defaultPlatformId":10020,"isSaasEnabled":true,"timeFormat":24,"dateTimeFormatID":1,"matrixPlatformCount":20,"testSuiteTescaseCount":50,"userProfile":{"name":"Dhaval","loginId":"Dhaval","firstName":"Dhaval","lastName":"Mistry","id":2547,"isInitialPasswordChanged":true,"isLdapUser":false,"isSAMLUser":false,"isSysAdmin":false,"gmtTzOffset":"-05:00","timeZone":"GMT-05:00","dateTimeFormat":"%m-%d-%Y","locale":"en-us","defaultModule":"DASHBOARD","moduletoolbar":"BOTH","maintoolbar":"BOTH","assettoolbar":"BOTH","isSuperAdmin":"false","localeCode":"en","localeID":1,"tzOffset":-18000000,"preferences":{"AUTOOPENFIRST":"1","EXPANDFIRST":"1"},"allowUserToCloseGrid":"false","closeAfterUpdate":"true","IsFirstTimeLogin":"false","makeTextWrap":"false","maxWindowOption":"false","moduleMaxWin":"false","pagelimit":"10","showMainToolbar":"false","tcStatusNotRun":"false","tcStepMaxWin":"false"},"serverTimeZone":"GMT0:00","currentdrops":[],"nomenclature":{"TEST CASE":"Test Case","TC":"Test Case","TCS":"Test Case Step","ISSUE":"Issue","IS":"Issue","DF":"Issue","DOMAIN":"Project","RELEASE":"Release","CYCLE":"Cycle","TEST SUITE":"Test Suite","TS":"Test Suite","INTEGRATION":"Integration","BUILD":"Build","REQUIREMENT":"Requirement","RQ":"Requirement"},"showReleaseNote":true,"packages":{"QMETRY_PROFESSIONAL":true,"VERSION_CONTROL":true,"INTEGRATION":true,"AUTOMATION":true,"REPORTS":true,"USER_ROLE":true,"LOCALIZATION":true,"CUSTOMIZATION":true,"NOTIFICATION":true,"EXPORT":true},"licenseDetail":{"Exploratory Testing":0,"Audit Compliance":0,"Concurrent Users":50,"Visual Analysis":0,"JIRA integration":0,"Authentication integration":0,"Users":50,"Notification":0,"licenseType":"commercial","Confluence Reports":0,"Export":0,"SERVICE":["Basic Test Management","Export","Advanced Customization","Notification","Version Control","Audit Compliance","Visual Analysis","User/Role Management","Authentication integration","Localization","Users","JIRA integration","API Calling","Automation","Exploratory Testing","Confluence Reports","Read-only Users","Concurrent Users","eSignature"],"serviceGroupUsage":"{\"Integration Pack\":0,\"Exploratory Testing\":0,\"Customization Pack\":0,\"Reporting Pack\":0,\"Audit & Compliance Pack\":0,\"Basic Test Management\":0,\"eSignature\":0,\"Users\":50,\"Internationalization Pack\":0}","Localization":0,"Automation":0,"API Calling":0,"licenseStartDate":"2018-01-11","User/Role Management":0,"Version Control":0,"licenseEndDate":"2020-01-11","licenseStatus":"active","Advanced Customization":0,"Basic Test Management":0,"eSignature":0,"Read-only Users":2,"users":{"active":3,"limit":50},"readOnlyUsers":{"active":0,"limit":2},"totalUsers":52,"concurrentUsers":50},"qmetryVersion":"8.5.2","alModules":["ADMIN","EXECUTION","REPORTS","REQUIREMENT","TESTCASE","ISSUE","TESTSUITE","IMPORT","PROJECT","USER","LABEL"],"alEvents":["CREATE","UPDATE","DELETE","MOVE","COPY","ARCHIVE","UNARCHIVE","CLONE","ADD","REMOVE"],"latestViews":{"TC":{"viewId":1,"viewName":"Default"},"TS":{"viewId":3,"viewName":"Default"},"RQ":{"viewId":6223,"viewName":"Custom"},"IS":{"viewId":4,"viewName":"Default"},"TE":{"viewId":4237,"viewName":"Default"},"TCS":{"viewId":4238,"viewName":"Default"}},"bddRepos":["BITBUCKET","GIT","SVN"],"dateTimeFormatNew":[{"id":1,"name":"MM-DD-YYYY","unique_value":"MM-dd-yyyy"},{"id":2,"name":"DD-MM-YYYY","unique_value":"dd-MM-yyyy"},{"id":3,"name":"YYYY-MM-DD","unique_value":"yyyy-MM-dd"},{"id":4,"name":"DD-MMM-YYYY","unique_value":"dd-MMM-yyyy"}],"isExtTrackerConfigured":false,"isRQConfigured":false,"autoReportBug":false,"isBddConfigured":false}
+
++ Response 400
+
+    + Body
+
+            {"success": false,"code": "CO.GENERAL_EXCEPTION"}
+
++ Response 401
+
+    + Body
+
+            {"success":false,"code":"CO.INVALID_API_KEY"}
+
++ Response 403
+
+    + Body
+
+            <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+            <HTML><HEAD><META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+            <TITLE>ERROR: The request could not be satisfied</TITLE>
+            </HEAD><BODY>
+            <H1>403 ERROR</H1>
+            <H2>The request could not be satisfied.</H2>
+            <HR noshade size="1px">
+            Bad request.
+
+            <BR clear="all">
+            <HR noshade size="1px">
+            <PRE>
+            Generated by cloudfront (CloudFront)
+            Request ID: q9kqFTQhWc8HLuToYy_5tkdfIkigdL_Xi6fMEGeLdWD-1eqQqSjDJA==
+            </PRE>
+            <ADDRESS>
+            </ADDRESS>
+            </BODY></HTML>
+
++ Response 500
+
+    + Body
+
+            {"success": false,"code": "CO.GENERAL_EXCEPTION"}
+
+
+# Group Release
+## Create  [/rest/admin/release]
+### Create [POST]
+API to create release
+
+**Request Body Insight**
+
+| Parameters|Description|Required|
+|-----------|:---------|:-------|
+|release|Release Parameters - Refer JSON Schema|Yes|
+|cycle|Cycle Parameters - Refer JSON Schema|Yes|
+
+<br><br> **NOTE:**
+<ul>
+    <li><font size="3">To get the projectID - Call API 'Projects/List'
+        <ul>
+            <li><font size="3">From the response, get value of following attribute -> data[&#x3C;index&#x3E;].projectID </li>
+        </ul>
+    </li>
+    <li><font size="3">Date format of the 'startDate' and 'targetDate' is depend on format that has been configured in qtm.
+        <ul>
+            <li><font size="3">To verify/update the Date Format - Go to qtm -> User Profile </li>
+        </ul>
+    </li>
+</ul>
+
++ Request
+    + Headers
+
+            content-type: application/json
+            apikey: <Generated Open API key>
+            project: <project>
+
+    + Body
+
+            {
+                "release": {
+                    "name": "Sample Release",
+                    "description": "",
+                    "startDate": "10-10-2018",
+                    "targetDate": "11-11-2018",
+                    "projectID": "1488"
+                },
+                "cycle": {
+                    "name": "Default Cycle",
+                    "isLocked": false,
+                    "isArchived": false
+                }
+            }
+
+    + Schema
+
+             "Release" : {
+                  "type" : "object",
+                  "required" : [ "name", "projectID", "startDate", "targetDate" ],
+                  "properties" : {
+                    "name" : {
+                      "type" : "string",
+                      "description" : "Name of Release"
+                    },
+                    "startDate" : {
+                      "type" : "string",
+                      "description" : "Start date of the Release"
+                    },
+                    "targetDate" : {
+                      "type" : "string",
+                      "description" : "Target date of the Release"
+                    },
+                    "projectID" : {
+                      "type" : "string",
+                      "description" : "ID of project in which the Release resides"
+                    }
+                  }
+                },
+             "Cycle" : {
+                  "type" : "object",
+                  "required" : [ "name" ],
+                  "properties" : {
+                    "name" : {
+                      "type" : "string",
+                      "position" : 1,
+                      "description" : "Name of Cycle"
+                    },
+                    "isLocked" : {
+                      "type" : "boolean",
+                      "position" : 2,
+                      "description" : "Defaulted to false",
+                      "default" : false
+                    },
+                    "isArchived" : {
+                      "type" : "boolean",
+                      "position" : 3,
+                      "description" : "Defaulted to false",
+                      "default" : false
+                    }
+                  }
+                }
+
+
++ Response 200
+
+    + Body
+
+            {"success":true,"code":"AD.RELEASE_SUCCESSFUL","data":[{"ENTITY_KEY":"{RELEASE}","releaseID":3717,"releaseName":"Sample Release","builds":[{"name":"Default Cycle","isArchive":false,"buildID":7181}]}]}
+
++ Response 400
+
+    + Body
+
+            {"success": false,"code": "CO.GENERAL_EXCEPTION"}
+
++ Response 401
+
+    + Body
+
+            {"success":false,"code":"CO.INVALID_API_KEY"}
+
++ Response 500
+
+    + Body
+
+            {"success": false,"code": "CO.GENERAL_EXCEPTION"}
+
+
+# Group Cycle
+## Create/Update  [/rest/admin/cycle]
+### Create [POST]
+API to add cycle
+
+**Request Body Insight**
+
+| Parameters|Description|Required|
+|-----------|:---------|:-------|
+|cycle|Provide cycle - Refer JSON Schema|Yes|
+
+<br><br> **NOTE:**
+<ul>
+    <li><font size="3">To get the projectID and releaseID - Call API 'Release/List'
+        <ul>
+            <li><font size="3">From the response, get value of following attribute respectively -> data[&#x3C;index&#x3E;].projectID and data[&#x3C;index&#x3E;].releaseID </li>
+        </ul>
+    </li>
+     <li><font size="3">Date format of the 'startDate' and 'targetDate' is depend on format that has been configured in qtm.
+        <ul>
+            <li><font size="3">To verify/update the Date Format - Go to qtm -> User Profile </li>
+        </ul>
+    </li>
+</ul>
+
++ Request
+    + Headers
+
+            content-type: application/json
+            apikey: <Generated Open API key>
+            project: <project>
+
+    + Body
+
+            {
+                "cycle": {
+                    "name": "Alpha_v1",
+                    "startDate": "10-10-2018",
+                    "targetDate": "11-11-2018",
+                    "projectID": "1494",
+                    "releaseID": 3729
+                }
+            }
+
+    + Schema
+
+            "CycleParams" : {
+                  "type" : "object",
+                  "required" : [ "name", "projectID", "releaseID" ],
+                  "properties" : {
+                    "name" : {
+                      "type" : "string",
+                      "description" : "Name of Cycle"
+                    },
+                    "startDate" : {
+                      "type" : "string",
+                      "description" : "To set StartDate of cycle"
+                    },
+                    "targetDate" : {
+                      "type" : "string",
+                      "description" : "To set TargetDate of cycle"
+                    },
+                    "projectID" : {
+                      "type" : "string",
+                      "description" : "Unique identifier of project in which the cycle is to be added"
+                    },
+                    "releaseID" : {
+                      "type" : "integer",
+                      "format" : "int32",
+                      "description" : "Unique identifier of release in which the cycle is to be added"
+                    }
+                  }
+                }
+
++ Response 200
+
+    + Body
+
+            {"success":true,"code":"AD.CYCLE_SUCCESSFUL","data":[{"ENTITY_KEY":"{CYCLE}","buildId":7195}],"release":"{\"data\":[{\"releaseID\":3729,\"name\":\"Alpha Release\",\"description\":\"\",\"isArchived\":false,\"targetDate\":\"10-26-2018 00:00:00\",\"createdDate\":\"10-26-2018 22:52:15\",\"startDate\":\"10-16-2018 00:00:00\"}],\"total\":null}"}
+
++ Response 400
+
+    + Body
+
+            {"success": false,"code": "CO.GENERAL_EXCEPTION"}
+
++ Response 401
+
+    + Body
+
+            {"success":false,"code":"CO.INVALID_API_KEY"}
+
++ Response 500
+
+    + Body
+
+            {"success": false,"code": "CO.GENERAL_EXCEPTION"}
+
+# Group Datagrid
+
+## Add Parameter [/rest/parameter]
+### AddArchive [POST]
+
+**Request Body Insight**
+
+| Parameters|Description|Required|
+|-----------|:---------|:-------|
+|paramName|Parameter Name|Yes|
+|paramDes|Parameter description|No|
+|values|Parameter values list as array|Yes|
+|projectIDs|comma separated ids of project|Yes|
+
+
++ Request
+    + Headers
+
+            content-type: application/json
+            apikey: <Generated Open API key>
+            project: <project>
+
+    + Body
+
+            {
+              "paramName": "FuelCharges",
+              "paramDes": "Weekly Fuel Charges",
+              "values": [
+                "71",
+                "74.20",
+                "73.45"
+              ],
+              "projectIDs": [
+                469
+              ]
+            }
+
++ Response 200
+
+    + Body
+
+            {
+              "success": true,
+              "data": {
+                "paramID": 346,
+                "name": "FuelCharges",
+                "description": "Weekly Fuel Charges",
+                "isArchived": false,
+                "createdDate": "2019-02-11T11:54:35",
+                "updatedDate": "",
+                "value": [
+                  {
+                    "paramValueID": 213,
+                    "value": "71"
+                  },
+                  {
+                    "paramValueID": 214,
+                    "value": "74.20"
+                  },
+                  {
+                    "paramValueID": 215,
+                    "value": "73.45"
+                  }
+                ]
+              }
+            }
+
++ Response 400
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.GENERAL_EXCEPTION"
+            }
+
++ Response 401
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.INVALID_API_KEY"
+            }
+            
++ Response 500
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.GENERAL_EXCEPTION"
+            }
+
+## Add Parameter [/rest/parameter]
+### AddDatagrid [POST]
+
+**Request Body Insight**
+
+| Parameters|Description|Required|
+|-----------|:---------|:-------|
+|paramName|Parameter Name|Yes|
+|paramDes|Parameter description|No|
+|values|Parameter values list as array|Yes|
+|projectIDs|comma separated ids of project|Yes|
+
+
++ Request
+    + Headers
+
+            content-type: application/json
+            apikey: <Generated Open API key>
+            project: <project>
+
+    + Body
+
+            {
+              "paramName": "FuelCharges",
+              "paramDes": "Weekly Fuel Charges",
+              "values": [
+                "71",
+                "74.20",
+                "73.45"
+              ],
+              "projectIDs": [
+                469
+              ]
+            }
+
++ Response 200
+
+    + Body
+
+            {
+              "success": true,
+              "data": {
+                "paramID": 346,
+                "name": "FuelCharges",
+                "description": "Weekly Fuel Charges",
+                "isArchived": false,
+                "createdDate": "2019-02-11T11:54:35",
+                "updatedDate": "",
+                "value": [
+                  {
+                    "paramValueID": 213,
+                    "value": "71"
+                  },
+                  {
+                    "paramValueID": 214,
+                    "value": "74.20"
+                  },
+                  {
+                    "paramValueID": 215,
+                    "value": "73.45"
+                  }
+                ]
+              }
+            }
+
++ Response 400
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.GENERAL_EXCEPTION"
+            }
+
++ Response 401
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.INVALID_API_KEY"
+            }
+            
++ Response 500
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.GENERAL_EXCEPTION"
+            }
+
+
+## Add Parameter [/rest/parameter]
+### AddDatagrid1 [POST]
+
+**Request Body Insight**
+
+| Parameters|Description|Required|
+|-----------|:---------|:-------|
+|paramName|Parameter Name|Yes|
+|paramDes|Parameter description|No|
+|values|Parameter values list as array|Yes|
+|projectIDs|comma separated ids of project|Yes|
+
+
++ Request
+    + Headers
+
+            content-type: application/json
+            apikey: <Generated Open API key>
+            project: <project>
+
+    + Body
+
+            {
+              "paramName": "FuelCharges",
+              "paramDes": "Weekly Fuel Charges",
+              "values": [
+                "71",
+                "74.20",
+                "73.45"
+              ],
+              "projectIDs": [
+                469
+              ]
+            }
+
++ Response 200
+
+    + Body
+
+            {
+              "success": true,
+              "data": {
+                "paramID": 346,
+                "name": "FuelCharges",
+                "description": "Weekly Fuel Charges",
+                "isArchived": false,
+                "createdDate": "2019-02-11T11:54:35",
+                "updatedDate": "",
+                "value": [
+                  {
+                    "paramValueID": 213,
+                    "value": "71"
+                  },
+                  {
+                    "paramValueID": 214,
+                    "value": "74.20"
+                  },
+                  {
+                    "paramValueID": 215,
+                    "value": "73.45"
+                  }
+                ]
+              }
+            }
+
++ Response 400
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.GENERAL_EXCEPTION"
+            }
+
++ Response 401
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.INVALID_API_KEY"
+            }
+            
++ Response 500
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.GENERAL_EXCEPTION"
+            }
+
+
+## Create [/rest/datagrid/create]
+### Create [POST]
+API to Create DataGrid
+
+**Request Body Insight**
+
+| Parameters|Description|Required|
+|-----------|:---------|:-------|
+|name|Datagrid name|Yes|
+|description|Value of field|Yes|
+|projectIDs|An array of Project Ids|Yes|
+|parameters|parameters - Refer JSON Schema|Yes|
+
+<br><br> **NOTE:**
+<ul>
+    <li><font size="3">To get the projectIDs - Call API - 'Projects/List'
+        <ul>
+            <li><font size="3">From the response, get value of following attribute -> data[&#x3C;index&#x3E;].projectID </li>
+        </ul>
+    </li>
+    <li><font size="3">To get the paramID - Call API - 'Datagrid/List parameter'
+        <ul>
+            <li><font size="3">From the response, get value of following attribute -> data[&#x3C;index&#x3E;].paramID </li>
+        </ul>
+    </li>
+</ul>
+
++ Request
+
+    + Headers
+
+            content-type: application/json
+            apikey: <Generated Open API key>
+            project: <project>
+
+    + Body
+
+            {
+              "name": "Datagrid 1",
+              "description": "description",
+              "projectIDs": [
+                249
+              ],
+              "parameters": [
+                {
+                  "paramID": "231",
+                  "orderID": 1,
+                  "parameterValues": [
+                    {
+                      "value": "abcd",
+                      "orderID": 1
+                    },
+                    {
+                      "value": "efgh",
+                      "orderID": 2
+                    }
+                  ]
+                },
+                {
+                  "paramID": "228",
+                  "orderID": 2,
+                  "parameterValues": [
+                    {
+                      "value": "p1",
+                      "orderID": 1
+                    },
+                    {
+                      "value": "p2",
+                      "orderID": 2
+                    }
+                  ]
+                }
+              ]
+            }
+
++ Schema
+
+            "parameters" : {
+              "type": "object",
+              "properties": {
+                "paramID": {
+                  "type": "string"
+                },
+                "orderID": {
+                  "type": "integer"
+                },
+                "parameterValues": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "value": {
+                          "type": "string"
+                        },
+                        "orderID": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "value",
+                        "orderID"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "value": {
+                          "type": "string"
+                        },
+                        "orderID": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "value",
+                        "orderID"
+                      ]
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "paramID",
+                "orderID",
+                "parameterValues"
+              ]
+            }
+
++ Response 200
+
+    + Body
+
+            {
+                "success": true
+            }
+
++ Response 400
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.GENERAL_EXCEPTION"
+            }
+
++ Response 401
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.INVALID_API_KEY"
+            }
+
++ Response 500
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.GENERAL_EXCEPTION"
+            }
+
+## List [/rest/datagrid/getList]
+### Get List [POST]
+API to get List Of DataGrid
+
+**Request Body Insight**
+
+| Parameters|Description|Required|
+|-----------|:---------|:-------|
+|filter|Refer JSON Schema|No|
+|sort|Refer JSON Schema|No|
+|showOnlyArchive|Value of field|No|
+|showArchive|Send true to display archived datagrid, false otherwise|No|
+|start|Start index of records|No|
+|limit|Number of records per page|No|
+|page|Page number to be displayed|No|
+
++ Request
+    + Headers
+
+            content-type: application/json
+            apikey: <Generated Open API key>
+            project: <project>
+
+    + Body
+
+            {
+                "filter": [
+                    {
+                        "type": "string",
+                        "value": "datagrid",
+                        "field": "name"
+                    },
+                    {
+                        "type": "string",
+                        "value": [
+                            249
+                        ],
+                        "field": "projectIDs"
+                    }
+                ],
+                "sort": [
+                    {
+                        "property": "createdDate",
+                        "direction": "DESC"
+                    }
+                ],
+                "showArchive": true,
+                "showOnlyArchive": false,
+                "start": 0,
+                "limit": 50,
+                "page": 1
+            }
+
+    + Schema
+            "filter": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "type": "string"
+                    },
+                    "field": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "value",
+                    "field"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "type": "array",
+                      "items": [
+                        {
+                          "type": "integer"
+                        }
+                      ]
+                    },
+                    "field": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "value",
+                    "field"
+                  ]
+                }
+              ]
+            }
+
++ Response 200 
+
+    + Body
+
+            {
+                "success": true,
+                "data": {
+                    "success": true,
+                    "data": [
+                        {
+                            "archived": false,
+                            "id": 73,
+                            "dataGridID": 73,
+                            "name": "Datagrid 8akb3ml86j",
+                            "description": "description",
+                            "createdBy": "Priyanka Shah",
+                            "createdDate": "30-10-2018 04:36:55 PM",
+                            "updatedBy": "Priyanka Shah",
+                            "isArchived": false,
+                            "hasParams": false,
+                            "projects": "Test123"
+                        },
+                        {
+                            "archived": false,
+                            "id": 69,
+                            "dataGridID": 69,
+                            "name": "DataGrid Delete Test",
+                            "description": "Desc",
+                            "createdBy": "Priyanka Shah",
+                            "createdDate": "24-10-2018 11:26:01 AM",
+                            "updatedBy": "Priyanka Shah",
+                            "updatedDate": "24-10-2018 11:34:31 AM",
+                            "isArchived": false,
+                            "hasParams": false,
+                            "projects": "Test123"
+                        }
+                    ],
+                    "total": 2
+                }
+            }
+
++ Response 400
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.GENERAL_EXCEPTION"
+            }
+
++ Response 401
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.INVALID_API_KEY"
+            }
+
++ Response 500
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.GENERAL_EXCEPTION"
+            }
+
+# Group Requirement
+## Create/Update Folder [/rest/requirements/folders]
+### Create Folder [POST]
+
+**Request Body Insight**
+
+| Parameters|Description|Required|
+|-----------|:---------|:-------|
+|parentId|Folder ID to which new folder is to be added |Yes|
+|name|Name of the Folder to be added|Yes|
+
+<br><br> **NOTE:**
+<ul>
+    <li><font size="3">To get the parentId -
+        <ul>
+            <li><font size="3"> If folder is to be added into the root folder - Call API - 'Admin/Get info Service'
+                <ul><li><font size="3"> From the response, get value of following attribute -> rootFolders.RQ.id </li></ul>
+            </li>
+            <li><font size="3"> If folder is to be added into the other folder - Call API - 'Requirement/List of folders'
+                <ul><li><font size="3"> From the response, get value of following attribute -> data[&#x3C;index&#x3E;].id </li></ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
++ Request
+    + Headers
+
+            content-type: application/json
+            apikey: <Generated Open API key>
+            project: <project>
+
+    + Body
+
+            {
+              "parentId": 12646,
+              "name": "CodeSnippetsTest"
+            }
+
++ Response 200
+
+    + Body
+
+            {"success":true,"code":"CO.ADD_FOLDER_SUCCESS","data":[{"id":12650,"parentId":12646,"name":"CodeSnippetsTest"}]}
+
++ Response 400
+
+    + Body
+
+            {"success": false,"code": "CO.GENERAL_EXCEPTION"}
+
++ Response 401
+
+    + Body
+
+            {"success":false,"code":"CO.INVALID_API_KEY"}
+
++ Response 500
+
+    + Body
+
+            {"success": false,"code": "CO.GENERAL_EXCEPTION"}
+
+## Create/Update [/rest/requirements]
+### Create [POST]
+
+**Request Body Insight**
+
+| Parameters|Description|Required|
+|-----------|:---------|:-------|
+|rqFolderId|FolderId of the folder in which Requirement is to be added|Yes|
+|name|Summary of the Requirement|Yes|
+|scope|Scope of the Requirement, possible values project,release,cycle,build|Yes|
+|updateWithVersion|Send 'true' is RQ version is to be added and 'false' if new RQ is to be added.|No|
+|updateVersionFlag|For new RQ value is '0' and to add version value if '3'|No|
+|priority|Priority of Requirement|No|
+|component|Label of Requirement|No|
+|requirementState|Status of Requirement|No|
+|description|Description of Requirement|No|
+|owner|Owner of Requirement|No|
+
+<br><br> **NOTE:**
+<ul>
+    <li><font size="3">To get the rqFolderID - Call API - 'Requirement/List of folders'
+        <ul><li><font size="3"> From the response, get value of following attribute -> data[&#x3C;index&#x3E;].id </li></ul>
+    </li>
+    <li><font size="3">To get the priority - Call API 'Admin/Get info Service'
+        <ul><li><font size="3"> From the response, get value of following attribute ->  customListObjs.issuePriority[&#x3C;index&#x3E;].id </li></ul>
+    </li>
+    <li><font size="3">To get the owner - Call API 'Admin/Get info Service'
+        <ul><li><font size="3"> From the response, get value of following attribute ->  ustomListObjs.users[&#x3C;index&#x3E;].id </li></ul>
+    </li>
+    <li><font size="3">To get the component - Call API 'Admin/Get info Service'
+        <ul><li><font size="3"> From the response, get value of following attribute ->  customListObjs.component[&#x3C;index&#x3E;].id </li></ul>
+    </li>
+    <li><font size="3">To get the requirementState - Call API 'Admin/Get info Service'
+        <ul><li><font size="3"> From the response, get value of following attribute -> customListObjs.requirementState[&#x3C;index&#x3E;].id  </li></ul>
+    </li>
+</ul>
+
++ Request
+    + Headers
+
+            content-type: application/json
+            apikey: <Generated Open API key>
+            project: <project>
+
+    + Body
+            
+            {
+              "rqFolderId": "6273",
+              "updateWithVersion": false,
+              "updateVersionFlag": 0,
+              "versions": [],
+              "scope": "project",
+              "name": "Add Parameter for Test run",
+              "priority": [
+                84160
+              ],
+              "requirementState": [
+                84176
+              ],
+              "description": "Add parameter in both test case and test step",
+              "owner": 1
+            }
+
++ Response 200
+
+    + Body
+
+            {
+              "success": true,
+              "code": "RQ.ADD_ENTITY_SUCCESS",
+              "message": "New requirement 3b3-RQ-7 created successfully",
+              "data": [
+                {
+                  "id": 217317,
+                  "rqVersionId": 227399,
+                  "entityKey": "3b3-RQ-7",
+                  "rqFolderId": 6273
+                }
+              ]
+            }
+
++ Response 400
+
+    + Body
+
+            {"success": false,"code": "CO.GENERAL_EXCEPTION"}
+
++ Response 401
+
+    + Body
+
+            {"success":false,"code":"CO.INVALID_API_KEY"}
+
++ Response 500
+
+    + Body
+
+            {"success": false,"code": "CO.GENERAL_EXCEPTION"}
+
+
+## Create/Update [/rest/requirements]
+### CreateVersionDelete [POST]
+
+**Request Body Insight**
+
+| Parameters|Description|Required|
+|-----------|:---------|:-------|
+|rqFolderId|FolderId of the folder in which Requirement is to be added|Yes|
+|name|Summary of the Requirement|Yes|
+|scope|Scope of the Requirement, possible values project,release,cycle,build|Yes|
+|updateWithVersion|Send 'true' is RQ version is to be added and 'false' if new RQ is to be added.|No|
+|updateVersionFlag|For new RQ value is '0' and to add version value if '3'|No|
+|priority|Priority of Requirement|No|
+|component|Label of Requirement|No|
+|requirementState|Status of Requirement|No|
+|description|Description of Requirement|No|
+|owner|Owner of Requirement|No|
+
+<br><br> **NOTE:**
+<ul>
+    <li><font size="3">To get the rqFolderID - Call API - 'Requirement/List of folders'
+        <ul><li><font size="3"> From the response, get value of following attribute -> data[&#x3C;index&#x3E;].id </li></ul>
+    </li>
+    <li><font size="3">To get the priority - Call API 'Admin/Get info Service'
+        <ul><li><font size="3"> From the response, get value of following attribute ->  customListObjs.issuePriority[&#x3C;index&#x3E;].id </li></ul>
+    </li>
+    <li><font size="3">To get the owner - Call API 'Admin/Get info Service'
+        <ul><li><font size="3"> From the response, get value of following attribute ->  ustomListObjs.users[&#x3C;index&#x3E;].id </li></ul>
+    </li>
+    <li><font size="3">To get the component - Call API 'Admin/Get info Service'
+        <ul><li><font size="3"> From the response, get value of following attribute ->  customListObjs.component[&#x3C;index&#x3E;].id </li></ul>
+    </li>
+    <li><font size="3">To get the requirementState - Call API 'Admin/Get info Service'
+        <ul><li><font size="3"> From the response, get value of following attribute -> customListObjs.requirementState[&#x3C;index&#x3E;].id  </li></ul>
+    </li>
+</ul>
+
++ Request
+    + Headers
+
+            content-type: application/json
+            apikey: <Generated Open API key>
+            project: <project>
+
+    + Body
+            
+            {
+              "rqFolderId": "6273",
+              "updateWithVersion": false,
+              "updateVersionFlag": 0,
+              "versions": [],
+              "scope": "project",
+              "name": "Add Parameter for Test run",
+              "priority": [
+                84160
+              ],
+              "requirementState": [
+                84176
+              ],
+              "description": "Add parameter in both test case and test step",
+              "owner": 1
+            }
+
++ Response 200
+
+    + Body
+
+            {
+              "success": true,
+              "code": "RQ.ADD_ENTITY_SUCCESS",
+              "message": "New requirement 3b3-RQ-7 created successfully",
+              "data": [
+                {
+                  "id": 217317,
+                  "rqVersionId": 227399,
+                  "entityKey": "3b3-RQ-7",
+                  "rqFolderId": 6273
+                }
+              ]
+            }
+
++ Response 400
+
+    + Body
+
+            {"success": false,"code": "CO.GENERAL_EXCEPTION"}
+
++ Response 401
+
+    + Body
+
+            {"success":false,"code":"CO.INVALID_API_KEY"}
+
++ Response 500
+
+    + Body
+
+            {"success": false,"code": "CO.GENERAL_EXCEPTION"}
+
+## Archive/Unarchive [/rest/requirements/archiveEntity]
+### Change Requirement state [POST]
+API To archive requirement based on specific version or all version
+
+**Request Body Insight**
+
+|Parameters|Description|Required|
+|-----------|:---------|:-------|
+|entityIds|An array of requirementId or requirementVersionId|Yes|
+|isArchived|Send True to archive the rquirement and false to unarchive requirement|Yes|
+|isEntityVersion|True for archive specific version of Requirement, false otherwise|No|
+
+<br><br> **NOTE:**
+<ul>
+    <li><font size="3">To get the entityIds(requirementId) - Call API - 'Requirement/Fetch Requirements'
+        <ul><li><font size="3"> From the response, get value of following attribute -> data[&#x3C;index&#x3E;].rqId </li></ul>
+    </li>
+    <li><font size="3">To get the entityIds(requirementVersionId) - Call API - 'requirement/List Versions'
+        <ul><li><font size="3"> From the response, get value of following attribute -> data[&#x3C;index&#x3E;].rqVersionID </li></ul>
+    </li>
+</ul>
+
++ Request
+    + Headers
+
+            content-type: application/json
+            apikey: <Generated Open API key>
+            project: <project>
+
+    + Body
+
+            {
+                "entityIds" : [138054],
+                "isArchived" : true,
+                "isEntityVersion" : true
+            }
+
++ Response 200
+
+    + Body
+
+            {"success":true,"code":"CO.ENTITY_ARCHIVE_SUCCESS","data":[{"ENTITY_NAME":"{REQUIREMENT}","ENTITY_KEY":""}]}
+
++ Response 400
+
+    + Body
+
+            {"success": false,"code": "CO.GENERAL_EXCEPTION"}
+
++ Response 401
+
+    + Body
+
+            {"success":false,"code":"CO.INVALID_API_KEY"}sssss
+
++ Response 500
+
+    + Body
+
+            {"success": false,"code": "CO.GENERAL_EXCEPTION"}
+
+
+## Create/Update [/rest/requirements]
+### CreateArchiveDelete1 [POST]
+
+**Request Body Insight**
+
+| Parameters|Description|Required|
+|-----------|:---------|:-------|
+|rqFolderId|FolderId of the folder in which Requirement is to be added|Yes|
+|name|Summary of the Requirement|Yes|
+|scope|Scope of the Requirement, possible values project,release,cycle,build|Yes|
+|updateWithVersion|Send 'true' is RQ version is to be added and 'false' if new RQ is to be added.|No|
+|updateVersionFlag|For new RQ value is '0' and to add version value if '3'|No|
+|priority|Priority of Requirement|No|
+|component|Label of Requirement|No|
+|requirementState|Status of Requirement|No|
+|description|Description of Requirement|No|
+|owner|Owner of Requirement|No|
+
+<br><br> **NOTE:**
+<ul>
+    <li><font size="3">To get the rqFolderID - Call API - 'Requirement/List of folders'
+        <ul><li><font size="3"> From the response, get value of following attribute -> data[&#x3C;index&#x3E;].id </li></ul>
+    </li>
+    <li><font size="3">To get the priority - Call API 'Admin/Get info Service'
+        <ul><li><font size="3"> From the response, get value of following attribute ->  customListObjs.issuePriority[&#x3C;index&#x3E;].id </li></ul>
+    </li>
+    <li><font size="3">To get the owner - Call API 'Admin/Get info Service'
+        <ul><li><font size="3"> From the response, get value of following attribute ->  ustomListObjs.users[&#x3C;index&#x3E;].id </li></ul>
+    </li>
+    <li><font size="3">To get the component - Call API 'Admin/Get info Service'
+        <ul><li><font size="3"> From the response, get value of following attribute ->  customListObjs.component[&#x3C;index&#x3E;].id </li></ul>
+    </li>
+    <li><font size="3">To get the requirementState - Call API 'Admin/Get info Service'
+        <ul><li><font size="3"> From the response, get value of following attribute -> customListObjs.requirementState[&#x3C;index&#x3E;].id  </li></ul>
+    </li>
+</ul>
+
++ Request
+    + Headers
+
+            content-type: application/json
+            apikey: <Generated Open API key>
+            project: <project>
+
+    + Body
+            
+            {
+              "rqFolderId": "6273",
+              "updateWithVersion": false,
+              "updateVersionFlag": 0,
+              "versions": [],
+              "scope": "project",
+              "name": "Add Parameter for Test run",
+              "priority": [
+                84160
+              ],
+              "requirementState": [
+                84176
+              ],
+              "description": "Add parameter in both test case and test step",
+              "owner": 1
+            }
+
++ Response 200
+
+    + Body
+
+            {
+              "success": true,
+              "code": "RQ.ADD_ENTITY_SUCCESS",
+              "message": "New requirement 3b3-RQ-7 created successfully",
+              "data": [
+                {
+                  "id": 217317,
+                  "rqVersionId": 227399,
+                  "entityKey": "3b3-RQ-7",
+                  "rqFolderId": 6273
+                }
+              ]
+            }
+
++ Response 400
+
+    + Body
+
+            {"success": false,"code": "CO.GENERAL_EXCEPTION"}
+
++ Response 401
+
+    + Body
+
+            {"success":false,"code":"CO.INVALID_API_KEY"}
+
++ Response 500
+
+    + Body
+
+            {"success": false,"code": "CO.GENERAL_EXCEPTION"}
+
+## Create/Update [/rest/requirements]
+### CreateArchiveDelete2 [POST]
+
+**Request Body Insight**
+
+| Parameters|Description|Required|
+|-----------|:---------|:-------|
+|rqFolderId|FolderId of the folder in which Requirement is to be added|Yes|
+|name|Summary of the Requirement|Yes|
+|scope|Scope of the Requirement, possible values project,release,cycle,build|Yes|
+|updateWithVersion|Send 'true' is RQ version is to be added and 'false' if new RQ is to be added.|No|
+|updateVersionFlag|For new RQ value is '0' and to add version value if '3'|No|
+|priority|Priority of Requirement|No|
+|component|Label of Requirement|No|
+|requirementState|Status of Requirement|No|
+|description|Description of Requirement|No|
+|owner|Owner of Requirement|No|
+
+<br><br> **NOTE:**
+<ul>
+    <li><font size="3">To get the rqFolderID - Call API - 'Requirement/List of folders'
+        <ul><li><font size="3"> From the response, get value of following attribute -> data[&#x3C;index&#x3E;].id </li></ul>
+    </li>
+    <li><font size="3">To get the priority - Call API 'Admin/Get info Service'
+        <ul><li><font size="3"> From the response, get value of following attribute ->  customListObjs.issuePriority[&#x3C;index&#x3E;].id </li></ul>
+    </li>
+    <li><font size="3">To get the owner - Call API 'Admin/Get info Service'
+        <ul><li><font size="3"> From the response, get value of following attribute ->  ustomListObjs.users[&#x3C;index&#x3E;].id </li></ul>
+    </li>
+    <li><font size="3">To get the component - Call API 'Admin/Get info Service'
+        <ul><li><font size="3"> From the response, get value of following attribute ->  customListObjs.component[&#x3C;index&#x3E;].id </li></ul>
+    </li>
+    <li><font size="3">To get the requirementState - Call API 'Admin/Get info Service'
+        <ul><li><font size="3"> From the response, get value of following attribute -> customListObjs.requirementState[&#x3C;index&#x3E;].id  </li></ul>
+    </li>
+</ul>
+
++ Request
+    + Headers
+
+            content-type: application/json
+            apikey: <Generated Open API key>
+            project: <project>
+
+    + Body
+            
+            {
+              "rqFolderId": "6273",
+              "updateWithVersion": false,
+              "updateVersionFlag": 0,
+              "versions": [],
+              "scope": "project",
+              "name": "Add Parameter for Test run",
+              "priority": [
+                84160
+              ],
+              "requirementState": [
+                84176
+              ],
+              "description": "Add parameter in both test case and test step",
+              "owner": 1
+            }
+
++ Response 200
+
+    + Body
+
+            {
+              "success": true,
+              "code": "RQ.ADD_ENTITY_SUCCESS",
+              "message": "New requirement 3b3-RQ-7 created successfully",
+              "data": [
+                {
+                  "id": 217317,
+                  "rqVersionId": 227399,
+                  "entityKey": "3b3-RQ-7",
+                  "rqFolderId": 6273
+                }
+              ]
+            }
+
++ Response 400
+
+    + Body
+
+            {"success": false,"code": "CO.GENERAL_EXCEPTION"}
+
++ Response 401
+
+    + Body
+
+            {"success":false,"code":"CO.INVALID_API_KEY"}
+
++ Response 500
+
+    + Body
+
+            {"success": false,"code": "CO.GENERAL_EXCEPTION"}
+
+
+# Group Issue
+
+## Create/Update [/rest/issues]
+### Create [POST]
+API to create internal Issue
+
+**Request Body Insight**
+
+| Parameters|Description|Required|
+|-----------|:---------|:-------|
+|sync_with|'igConfigurationID' of Jira or 'internalTrackerId' if external Project isn't configured|Yes|
+|issueType|Type ID for the issue that is being added e.g. Bug, Enhancement, New Feature, etc. depending on the value stored for the list.|Yes|
+|issuePriority|PriorityId of Issue|Yes|
+|issueOwner|OwnerId of Issue|No|
+|summary|provide summary|Yes|
+|component|LabelId of Issue|No|
+|affectedRelease|Release Id of Issue|No|
+|environment|Enter environment within which the issue was detected|No|
+|description|Enter text describing the issue|No|
+|integration||No|
+|removeSteps||No|
+
+<br><br> **NOTE:**
+<ul>
+    <li><font size="3">To get the sync_with (Value for igConfigurationID or internalTrackerId) - Call API 'Admin/Get info Service'
+        <ul><li><font size="3"> From the response, get value of following attribute respectively -> customListObjs.component[&#x3C;index&#x3E;].igConfigurationID and internalTrackerId</li></ul>
+    </li>
+    <li><font size="3">To get the issueType - Call API 'Admin/Get info Service'
+        <ul><li><font size="3"> From the response, get value of following attribute ->  customListObjs.issueType[&#x3C;index&#x3E;].id </li></ul>
+    </li>
+    <li><font size="3">To get the issuePriority - Call API 'Admin/Get info Service'
+        <ul><li><font size="3"> From the response, get value of following attribute ->  customListObjs.issuePriority[&#x3C;index&#x3E;].id </li></ul>
+    </li>
+    <li><font size="3">To get the issueOwner - Call API 'Admin/Get info Service'
+        <ul><li><font size="3"> From the response, get value of following attribute ->  ustomListObjs.users[&#x3C;index&#x3E;].id </li></ul>
+    </li>
+    <li><font size="3">To get the component - Call API 'Admin/Get info Service'
+        <ul><li><font size="3"> From the response, get value of following attribute ->  customListObjs.component[&#x3C;index&#x3E;].id </li></ul>
+    </li>
+    <li><font size="3">To get the affectedRelease - Call API 'Admin/Get info Service'
+        <ul><li><font size="3"> From the response, get value of following attribute -> data[&#x3C;index&#x3E;].releaseID </li></ul>
+    </li>
+</ul>
+
++ Request
+    + Headers
+
+            content-type: application/json
+            apikey: <Generated Open API key>
+            project: <project>
+
+    + Body
+
+            {
+              "sync_with": 2,
+              "issueType": 189337,
+              "issuePriority": 189340,
+              "issueOwner": 606,
+              "removeSteps": [],
+              "integration": [],
+              "summary": "Money withdrawal is success even if insufficient amount",
+              "priority": [
+                189340
+              ],
+              "type": [
+                189337
+              ],
+              "component": [
+                189375
+              ],
+              "owner": [
+                606
+              ],
+              "release": [
+                3729
+              ],
+              "description": "Money withdrawal is success even if insufficient amount",
+              "affectedRelease": 3729
+            }
+
++ Response 200
+
+    + Body
+
+            {"success":true,"code":"IS.ADD_ENTITY_SUCCESS","data":[{"id":"COD-IS-6","dfId":118147}]}
+
++ Response 400
+
+    + Body
+
+            {"success": false,"code": "CO.GENERAL_EXCEPTION"}
+
++ Response 401
+
+    + Body
+
+            {"success":false,"code":"CO.INVALID_API_KEY"}
+
++ Response 500
+
+    + Body
+
+            {"success": false,"code": "CO.GENERAL_EXCEPTION"}
+
+## Create/Update [/rest/issues]
+### CreateDelete [POST]
+API to create internal Issue
+
+**Request Body Insight**
+
+| Parameters|Description|Required|
+|-----------|:---------|:-------|
+|sync_with|'igConfigurationID' of Jira or 'internalTrackerId' if external Project isn't configured|Yes|
+|issueType|Type ID for the issue that is being added e.g. Bug, Enhancement, New Feature, etc. depending on the value stored for the list.|Yes|
+|issuePriority|PriorityId of Issue|Yes|
+|issueOwner|OwnerId of Issue|No|
+|summary|provide summary|Yes|
+|component|LabelId of Issue|No|
+|affectedRelease|Release Id of Issue|No|
+|environment|Enter environment within which the issue was detected|No|
+|description|Enter text describing the issue|No|
+|integration||No|
+|removeSteps||No|
+
+<br><br> **NOTE:**
+<ul>
+    <li><font size="3">To get the sync_with (Value for igConfigurationID or internalTrackerId) - Call API 'Admin/Get info Service'
+        <ul><li><font size="3"> From the response, get value of following attribute respectively -> customListObjs.component[&#x3C;index&#x3E;].igConfigurationID and internalTrackerId</li></ul>
+    </li>
+    <li><font size="3">To get the issueType - Call API 'Admin/Get info Service'
+        <ul><li><font size="3"> From the response, get value of following attribute ->  customListObjs.issueType[&#x3C;index&#x3E;].id </li></ul>
+    </li>
+    <li><font size="3">To get the issuePriority - Call API 'Admin/Get info Service'
+        <ul><li><font size="3"> From the response, get value of following attribute ->  customListObjs.issuePriority[&#x3C;index&#x3E;].id </li></ul>
+    </li>
+    <li><font size="3">To get the issueOwner - Call API 'Admin/Get info Service'
+        <ul><li><font size="3"> From the response, get value of following attribute ->  ustomListObjs.users[&#x3C;index&#x3E;].id </li></ul>
+    </li>
+    <li><font size="3">To get the component - Call API 'Admin/Get info Service'
+        <ul><li><font size="3"> From the response, get value of following attribute ->  customListObjs.component[&#x3C;index&#x3E;].id </li></ul>
+    </li>
+    <li><font size="3">To get the affectedRelease - Call API 'Admin/Get info Service'
+        <ul><li><font size="3"> From the response, get value of following attribute -> data[&#x3C;index&#x3E;].releaseID </li></ul>
+    </li>
+</ul>
+
++ Request
+    + Headers
+
+            content-type: application/json
+            apikey: <Generated Open API key>
+            project: <project>
+
+    + Body
+
+            {
+              "sync_with": 2,
+              "issueType": 189337,
+              "issuePriority": 189340,
+              "issueOwner": 606,
+              "removeSteps": [],
+              "integration": [],
+              "summary": "Money withdrawal is success even if insufficient amount",
+              "priority": [
+                189340
+              ],
+              "type": [
+                189337
+              ],
+              "component": [
+                189375
+              ],
+              "owner": [
+                606
+              ],
+              "release": [
+                3729
+              ],
+              "description": "Money withdrawal is success even if insufficient amount",
+              "affectedRelease": 3729
+            }
+
++ Response 200
+
+    + Body
+
+            {"success":true,"code":"IS.ADD_ENTITY_SUCCESS","data":[{"id":"COD-IS-6","dfId":118147}]}
+
++ Response 400
+
+    + Body
+
+            {"success": false,"code": "CO.GENERAL_EXCEPTION"}
+
++ Response 401
+
+    + Body
+
+            {"success":false,"code":"CO.INVALID_API_KEY"}
+
++ Response 500
+
+    + Body
+
+            {"success": false,"code": "CO.GENERAL_EXCEPTION"}
+
+# Group Testcase
+
+## Create / Update Folder [/rest/testcases/folders]
+### Create [POST]
+
+**Request Body Insight**
+
+| Parameters|Description|Required|
+|-----------|:---------|:-------|
+|parentId|Id of parent folder|Yes|
+|name|Folder Name|Yes|
+
+<br><br> **NOTE:**
+<ul>
+    <li><font size="3">To get the parentId - For root folder | Call API 'Admin/Get info Service'
+        <ul>
+            <li><font size="3">From the response, get value of following attribute -> rootFolders.TC.id </li>
+        </ul>
+    </li>
+    <li><font size="3">for any other folder | Call API 'Testcase/List of folders'
+        <ul>
+            <li><font size="3">From the response, get value of following attribute -> data[&#x3C;index&#x3E;].id </li>
+        </ul>
+    </li>
+</ul>
+
++ Request
+    + Headers
+
+            content-type: application/json
+            apikey: <Generated Open API key>
+            project: <project>
+
+    + Body
+
+             {
+                 "parentId" : 26524,
+                 "name" : "Testcase Folder"
+             }
+
++ Response 200
+
+    + Body
+
+            {
+              "success": true,
+              "code": "CO.ADD_FOLDER_SUCCESS",
+              "data": [
+                {
+                  "id": 68269
+                }
+              ]
+            }
+
++ Response 400
+
+    + Body
+
+            {
+              "success": false,
+              "code": "TC.ADD_FOLDER_FAILURE"
+            }
+
++ Response 401
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.INVALID_API_KEY"
+            }
+
++ Response 500
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.GENERAL_EXCEPTION"
+            }
+
+## Create/ Update [/rest/testcases]
+### Create [POST]
+
+**Request Body Insight**
+
+| Parameters|Description|Required|
+|-----------|:---------|:-------|
+|tcFolderID|ID of the folder where Testcase will be added|Yes|
+|steps|An array of Steps - Refer JSON Schema|No|
+|name|Summary of Testcase|Yes|
+|priority|PriorityID of Testcase|No|
+|component|Component(Label) Id of Testcase|No|
+|owner|OwnerId of Testcase|No|
+|testCaseState|StatusId of Testcase|No|
+|testCaseType|Id of Test Category|No|
+|executionMinutes|Estimated Time (In Minute/s) for Execution|No|
+|testingType|Id of TestingType|No|
+|description|Description of Testcase|No|
+
+<br><br> **NOTE:**
+<ul>
+    <li><font size="3">To get the tcFolderID - For root folder | Call API 'Admin/Get info Service'
+        <ul>
+            <li><font size="3">From the response, get value of following attribute -> data[&#x3C;index&#x3E;].Id </li>
+        </ul>
+    </li>
+    <li><font size="3">To get priority, owner, component, testCaseState, testCaseType and testingType - Call API 'Admin/Get info Service'
+        <ul>
+            <li><font size="3">priority : From the response, get value of following attribute -> customListObjs.priority[&#x3C;index&#x3E;].id </li>
+        </ul>
+        <ul>
+            <li><font size="3">owner : From the response, get value of following attribute -> customListObjs.owner[&#x3C;index&#x3E;].id </li>
+        </ul>
+        <ul>
+            <li><font size="3">component : From the response, get value of following attribute -> customListObjs.component[&#x3C;index&#x3E;].id </li>
+        </ul>
+        <ul>
+            <li><font size="3">testCaseState : From the response, get value of following attribute -> customListObjs.testCaseState[&#x3C;index&#x3E;].id </li>
+        </ul>
+        <ul>
+            <li><font size="3">testCaseType : From the response, get value of following attribute -> customListObjs.testCaseType[&#x3C;index&#x3E;].id </li>
+        </ul>
+        <ul>
+            <li><font size="3">testingType : From the response, get value of following attribute -> customListObjs.testingType[&#x3C;index&#x3E;].id </li>
+        </ul>
+    </li>
+</ul>
+
++ Request
+    + Headers
+
+            content-type: application/json
+            apikey: <Generated Open API key>
+            project: <project>
+
+    + Body
+
+            {
+              "tcFolderID": 26524,
+              "steps": [
+                {
+                  "orderId": 1,
+                  "description": "First Step",
+                  "inputData": "First Input",
+                  "expectedOutcome": "First Outcome"
+                },
+                {
+                  "orderId": 2,
+                  "description": "Second Step",
+                  "inputData": "Second Input",
+                  "expectedOutcome": "Second Outcome"
+                }
+              ],
+              "name": "Test Case 1",
+              "priority": 122587,
+              "owner":3,
+              "component": [
+                122647
+              ],
+              "testCaseState": 122590,
+              "executionMinutes": 1,
+              "testCaseType": 122598,
+              "description": "Description",
+              "testingType": 122594
+            }
+
+    + Schema
+
+            "Steps" : {
+                  "type" : "object",
+                  "required" : [ "description", "expectedOutcome", "inputData", "orderId" ],
+                  "properties" : {
+                    "orderId" : {
+                      "type" : "integer",
+                      "format" : "int32",
+                      "description" : "Number of Order"
+                    },
+                    "description" : {
+                      "type" : "string",
+                      "description" : "Value of Description"
+                    },
+                    "inputData" : {
+                      "type" : "string",
+                      "description" : "Value of InputData"
+                    },
+                    "expectedOutcome" : {
+                      "type" : "string",
+                      "description" : "Value of ExpectedOutcome"
+                    },
+                    "tcRunID" : {
+                      "type" : "string",
+                      "description" : "Id of Test Run"
+                    }
+                  }
+                }
+
++ Response 200
+
+    + Body
+
+            {
+                "data": [
+                {
+                    "id": 3878820,
+                    "entityKey": "PAR-TC-2",
+                    "tcVersionId": 4090847
+                }
+              ],
+                "success": true,
+                "code": "TC.ADD_ENTITY_SUCCESS",
+                "message": "New test case PAR-TC-2 created successfully."
+            }
+
++ Response 400
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.GENERAL_EXCEPTION"
+            }
+
++ Response 401
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.INVALID_API_KEY"
+            }
+
++ Response 500
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.GENERAL_EXCEPTION"
+            }
+
+## Create/ Update [/rest/testcases]
+### CreateDelete [POST]
+
+**Request Body Insight**
+
+| Parameters|Description|Required|
+|-----------|:---------|:-------|
+|tcFolderID|ID of the folder where Testcase will be added|Yes|
+|steps|An array of Steps - Refer JSON Schema|No|
+|name|Summary of Testcase|Yes|
+|priority|PriorityID of Testcase|No|
+|component|Component(Label) Id of Testcase|No|
+|owner|OwnerId of Testcase|No|
+|testCaseState|StatusId of Testcase|No|
+|testCaseType|Id of Test Category|No|
+|executionMinutes|Estimated Time (In Minute/s) for Execution|No|
+|testingType|Id of TestingType|No|
+|description|Description of Testcase|No|
+
+<br><br> **NOTE:**
+<ul>
+    <li><font size="3">To get the tcFolderID - For root folder | Call API 'Admin/Get info Service'
+        <ul>
+            <li><font size="3">From the response, get value of following attribute -> data[&#x3C;index&#x3E;].Id </li>
+        </ul>
+    </li>
+    <li><font size="3">To get priority, owner, component, testCaseState, testCaseType and testingType - Call API 'Admin/Get info Service'
+        <ul>
+            <li><font size="3">priority : From the response, get value of following attribute -> customListObjs.priority[&#x3C;index&#x3E;].id </li>
+        </ul>
+        <ul>
+            <li><font size="3">owner : From the response, get value of following attribute -> customListObjs.owner[&#x3C;index&#x3E;].id </li>
+        </ul>
+        <ul>
+            <li><font size="3">component : From the response, get value of following attribute -> customListObjs.component[&#x3C;index&#x3E;].id </li>
+        </ul>
+        <ul>
+            <li><font size="3">testCaseState : From the response, get value of following attribute -> customListObjs.testCaseState[&#x3C;index&#x3E;].id </li>
+        </ul>
+        <ul>
+            <li><font size="3">testCaseType : From the response, get value of following attribute -> customListObjs.testCaseType[&#x3C;index&#x3E;].id </li>
+        </ul>
+        <ul>
+            <li><font size="3">testingType : From the response, get value of following attribute -> customListObjs.testingType[&#x3C;index&#x3E;].id </li>
+        </ul>
+    </li>
+</ul>
+
++ Request
+    + Headers
+
+            content-type: application/json
+            apikey: <Generated Open API key>
+            project: <project>
+
+    + Body
+
+            {
+              "tcFolderID": 26524,
+              "steps": [
+                {
+                  "orderId": 1,
+                  "description": "First Step",
+                  "inputData": "First Input",
+                  "expectedOutcome": "First Outcome"
+                },
+                {
+                  "orderId": 2,
+                  "description": "Second Step",
+                  "inputData": "Second Input",
+                  "expectedOutcome": "Second Outcome"
+                }
+              ],
+              "name": "Test Case 1",
+              "priority": 122587,
+              "owner":3,
+              "component": [
+                122647
+              ],
+              "testCaseState": 122590,
+              "executionMinutes": 1,
+              "testCaseType": 122598,
+              "description": "Description",
+              "testingType": 122594
+            }
+
+    + Schema
+
+            "Steps" : {
+                  "type" : "object",
+                  "required" : [ "description", "expectedOutcome", "inputData", "orderId" ],
+                  "properties" : {
+                    "orderId" : {
+                      "type" : "integer",
+                      "format" : "int32",
+                      "description" : "Number of Order"
+                    },
+                    "description" : {
+                      "type" : "string",
+                      "description" : "Value of Description"
+                    },
+                    "inputData" : {
+                      "type" : "string",
+                      "description" : "Value of InputData"
+                    },
+                    "expectedOutcome" : {
+                      "type" : "string",
+                      "description" : "Value of ExpectedOutcome"
+                    },
+                    "tcRunID" : {
+                      "type" : "string",
+                      "description" : "Id of Test Run"
+                    }
+                  }
+                }
+
++ Response 200
+
+    + Body
+
+            {
+                "data": [
+                {
+                    "id": 3878820,
+                    "entityKey": "PAR-TC-2",
+                    "tcVersionId": 4090847
+                }
+              ],
+                "success": true,
+                "code": "TC.ADD_ENTITY_SUCCESS",
+                "message": "New test case PAR-TC-2 created successfully."
+            }
+
++ Response 400
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.GENERAL_EXCEPTION"
+            }
+
++ Response 401
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.INVALID_API_KEY"
+            }
+
++ Response 500
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.GENERAL_EXCEPTION"
+            }       
+
+## Create/ Update [/rest/testcases]
+### CreateDeleteVersion [POST]
+
+**Request Body Insight**
+
+| Parameters|Description|Required|
+|-----------|:---------|:-------|
+|tcFolderID|ID of the folder where Testcase will be added|Yes|
+|steps|An array of Steps - Refer JSON Schema|No|
+|name|Summary of Testcase|Yes|
+|priority|PriorityID of Testcase|No|
+|component|Component(Label) Id of Testcase|No|
+|owner|OwnerId of Testcase|No|
+|testCaseState|StatusId of Testcase|No|
+|testCaseType|Id of Test Category|No|
+|executionMinutes|Estimated Time (In Minute/s) for Execution|No|
+|testingType|Id of TestingType|No|
+|description|Description of Testcase|No|
+
+<br><br> **NOTE:**
+<ul>
+    <li><font size="3">To get the tcFolderID - For root folder | Call API 'Admin/Get info Service'
+        <ul>
+            <li><font size="3">From the response, get value of following attribute -> data[&#x3C;index&#x3E;].Id </li>
+        </ul>
+    </li>
+    <li><font size="3">To get priority, owner, component, testCaseState, testCaseType and testingType - Call API 'Admin/Get info Service'
+        <ul>
+            <li><font size="3">priority : From the response, get value of following attribute -> customListObjs.priority[&#x3C;index&#x3E;].id </li>
+        </ul>
+        <ul>
+            <li><font size="3">owner : From the response, get value of following attribute -> customListObjs.owner[&#x3C;index&#x3E;].id </li>
+        </ul>
+        <ul>
+            <li><font size="3">component : From the response, get value of following attribute -> customListObjs.component[&#x3C;index&#x3E;].id </li>
+        </ul>
+        <ul>
+            <li><font size="3">testCaseState : From the response, get value of following attribute -> customListObjs.testCaseState[&#x3C;index&#x3E;].id </li>
+        </ul>
+        <ul>
+            <li><font size="3">testCaseType : From the response, get value of following attribute -> customListObjs.testCaseType[&#x3C;index&#x3E;].id </li>
+        </ul>
+        <ul>
+            <li><font size="3">testingType : From the response, get value of following attribute -> customListObjs.testingType[&#x3C;index&#x3E;].id </li>
+        </ul>
+    </li>
+</ul>
+
++ Request
+    + Headers
+
+            content-type: application/json
+            apikey: <Generated Open API key>
+            project: <project>
+
+    + Body
+
+            {
+              "tcFolderID": 26524,
+              "steps": [
+                {
+                  "orderId": 1,
+                  "description": "First Step",
+                  "inputData": "First Input",
+                  "expectedOutcome": "First Outcome"
+                },
+                {
+                  "orderId": 2,
+                  "description": "Second Step",
+                  "inputData": "Second Input",
+                  "expectedOutcome": "Second Outcome"
+                }
+              ],
+              "name": "Test Case 1",
+              "priority": 122587,
+              "owner":3,
+              "component": [
+                122647
+              ],
+              "testCaseState": 122590,
+              "executionMinutes": 1,
+              "testCaseType": 122598,
+              "description": "Description",
+              "testingType": 122594
+            }
+
+    + Schema
+
+            "Steps" : {
+                  "type" : "object",
+                  "required" : [ "description", "expectedOutcome", "inputData", "orderId" ],
+                  "properties" : {
+                    "orderId" : {
+                      "type" : "integer",
+                      "format" : "int32",
+                      "description" : "Number of Order"
+                    },
+                    "description" : {
+                      "type" : "string",
+                      "description" : "Value of Description"
+                    },
+                    "inputData" : {
+                      "type" : "string",
+                      "description" : "Value of InputData"
+                    },
+                    "expectedOutcome" : {
+                      "type" : "string",
+                      "description" : "Value of ExpectedOutcome"
+                    },
+                    "tcRunID" : {
+                      "type" : "string",
+                      "description" : "Id of Test Run"
+                    }
+                  }
+                }
+
++ Response 200
+
+    + Body
+
+            {
+                "data": [
+                {
+                    "id": 3878820,
+                    "entityKey": "PAR-TC-2",
+                    "tcVersionId": 4090847
+                }
+              ],
+                "success": true,
+                "code": "TC.ADD_ENTITY_SUCCESS",
+                "message": "New test case PAR-TC-2 created successfully."
+            }
+
++ Response 400
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.GENERAL_EXCEPTION"
+            }
+
++ Response 401
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.INVALID_API_KEY"
+            }
+
++ Response 500
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.GENERAL_EXCEPTION"
+            }       
+
+## Link TestCases [/rest/requirements/link/testcases]
+### Link TestCases [PUT]
+
+**Request Body Insight**
+
+| Parameters|Description|Required|
+|-----------|:---------|:-------|
+|rqID|Entitykey of the Requirement|Yes|
+|rqVersionId|VersionId of Requirement|Yes|
+|tcVersionIds|An array of testcase version's Id|Yes|
+
+<br><br> **NOTE:**
+<ul>
+    <li><font size="3">To get the rqID and rqVersionId - Call API - 'Requirement/Fetch Requirements'
+        <ul><li><font size="3"> From the response, get value of following attribute respectively -> data[&#x3C;index&#x3E;].entityKey and data[&#x3C;index&#x3E;].rqVersionID</li></ul>
+    </li>
+    <li><font size="3">To get the tcVersionIds - Call API - 'Testcase/List version detail'
+        <ul><li><font size="3"> From the response, get value of following attribute -> data[&#x3C;index&#x3E;].tcVersionID </li></ul>
+    </li>
+</ul>
+
++ Request
+    + Headers
+
+            content-type: application/json
+            apikey: <Generated Open API key>
+            project: <project>
+
+    + Body
+
+            {
+              "rqID": "COD-RQ-1",
+              "rqVersionId": 237288,
+              "tcVersionIds": "1007340"
+            }
+
++ Response 200
+
+    + Body
+
+            {"success":true,"code":"CO.LINK_ENTITY_SUCCESS","data":{"archivedTcTotal":0,"unarchivedTcTotal":2}}
+
++ Response 400
+
+    + Body
+
+            {"success":false,"code":"CO.LINK_ENTITY_FAIL"}
+
++ Response 401
+
+    + Body
+
+            {"success":false,"code":"CO.INVALID_API_KEY"}
+
++ Response 500
+
+    + Body
+
+            {"success": false,"code": "CO.GENERAL_EXCEPTION"}
+
+
+## Archive/ Unarchive [/rest/testcases/archiveEntity]
+### Change state [POST]
+API To archive testcase based on specific version or all version
+
+**Request Body Insight**
+
+| Parameters|Description|Required|
+|-----------|:---------|:-------|
+|entityIds| An array of testcaseId or testcaseVersionId|Yes|
+|isArchived|True for archive, false for unarchive|Yes|
+|isEntityVersion|True for archive specific version of Testcase otherwise false|No|
+
+<br><br> **NOTE:**
+<ul>
+    <li><font size="3">To get the entityIds - Call API 'Testcase/Fetch List for Bulk Opeartion'
+        <ul>
+            <li><font size="3">From the response, get value of following attribute -> data[&#x3C;index&#x3E;].tcID </li>
+        </ul>
+    </li>
+</ul>
+
++ Request
+    + Headers
+
+            content-type: application/json
+            apikey: <Generated Open API key>
+            project: <project>
+
+    + Body
+
+            {
+              "entityIds": [
+                593939                
+              ],
+              "isArchived": true,
+              "isEntityVersion": true
+            }
+
++ Response 200
+
+    + Body
+
+            {"success":true,"code":"CO.ENTITY_ARCHIVE_SUCCESS","data":[{"ENTITY_NAME":"{TESTCASE}","ENTITY_KEY":""}]}
+
++ Response 400
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.GENERAL_EXCEPTION"
+            }
+
++ Response 401
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.INVALID_API_KEY"
+            }
+
++ Response 500
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.GENERAL_EXCEPTION"
+            }
+
+
+# Group Platform
+
+## List [/rest/admin/platform/list]
+### Get List [POST]
+API to list platforms
+
+**Request Body Insight**
+
+| Parameters|Description|Required|
+|-----------|:---------|:-------|
+|start|Start index of records|No|
+|limit|Number of records per page|No|
+|page|Page number to be displayed|No|
+|sort|Sort parameters - Refer JSON Schema|No|
+
++ Request
+    + Headers
+
+            content-type: application/json
+            apikey: <Generated Open API key>
+            project: <project>
+
+    + Body
+
+             {
+                 "start" :0,
+                 "limit" :50,
+                 "page" :1,
+                 "sort": "[{\"property\":\"platformID\",\"direction\":\"DESC\"}]"
+             }
+
+    + Schema
+
+            "Sort" : {
+                  "type" : "object",
+                  "properties" : {
+                    "property" : {
+                      "type" : "string"
+                    },
+                    "direction" : {
+                      "type" : "string"
+                    }
+                  }
+                }
+
++ Response 200
+
+    + Body
+
+            {"data":[{"platformID":4837,"createdDate":"2018-10-27T01:50:01","name":"No Platform","isPlatformArchived":false,"Case":"","projectID":1494,"platformScope":1,"isProjectLevel":1,"isReleaseLevel":1}],"total":1}
+
++ Response 400
+
+    + Body
+
+            {"success": false,"code": "CO.GENERAL_EXCEPTION"}
+
++ Response 401
+
+    + Body
+
+            {"success":false,"code":"CO.INVALID_API_KEY"}
+
++ Response 500
+
+    + Body
+
+            {"success": false,"code": "CO.GENERAL_EXCEPTION"}
+
+
+# Group Testsuite
+
+## Create Folder [/rest/testsuites/folders]
+### Create [POST]
+
+**Request Body Insight**
+
+| Parameters|Description|Required|
+|-----------|:---------|:-------|
+|name|Folder Name|Yes|
+|parentId|ID of parent folder|Yes|
+
+<br><br> **NOTE:**
+<ul>
+    <li><font size="3">To get the parentId - For root folder | Call API 'Admin/Get info Service'
+        <ul>
+            <li><font size="3">From the response, get value of following attribute -> rootFolders.TS.id </li>
+        </ul>
+    </li>
+</ul>
+
++ Request
+    + Headers
+
+            content-type: application/json
+            apikey: <Generated Open API key>
+            project: <project>
+
+    + Body
+
+             {
+                 "name" : "Test Suite Folder",
+                 "parentId" : 49581
+             }
+
++ Response 200
+
+    + Body
+
+            {
+                "success": true,
+                 "code": "CO.ADD_FOLDER_SUCCESS",
+                 "data": [
+                    {
+                  "id": 63394
+                    }
+              ]
+            }
+
++ Response 400
+
+    + Body
+
+            {"success":false,"code":"TS.DUPLICATE_FOLDER","data":[{"id":63395,"FOLDER_PATH":"/CodeSnippets/","msg":"DUPLICATE_FOLDER"}]}
+
++ Response 401
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.INVALID_API_KEY"
+            }
+
++ Response 500
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.GENERAL_EXCEPTION"
+            }
+
+## Create/Update [/rest/testsuites]
+### CreateArchive [POST]
+API to create testsuite
+
+**Request Body Insight**
+
+| Parameters|Description|Required|
+|-----------|:---------|:-------|
+|parentFolderId|Parent folderId of Test Suites|Yes|
+|isAutomatedFlag|Default value false|No|
+|name|Summary of Test Suites|Yes|
+|description|Description of Test Suites|No|
+|owner|Owner of Test Suites|No|
+|testSuiteState|Status of Test Suites|No|
+
+<br><br> **NOTE:**
+<ul>
+    <li><font size="3">To get the parentFolderId | Call API 'Testsuite/List of folders'
+        <ul>
+            <li><font size="3">From the response, get value of following attribute -> data[&#x3C;index&#x3E;].id </li>
+        </ul>
+    </li>
+    <li><font size="3">To get the owner | Call API 'Admin/Get info Service'
+        <ul>
+            <li><font size="3">From the response, get value of following attribute -> customListObjs.owner[&#x3C;index&#x3E;].id </li>
+        </ul>
+    </li>
+    <li><font size="3">To get the testSuiteState | Call API 'Admin/Get info Service'
+        <ul>
+            <li><font size="3">From the response, get value of following attribute -> customListObjs.testSuiteState[&#x3C;index&#x3E;].id </li>
+        </ul>
+    </li>
+</ul>
+
++ Request
+    + Headers
+
+            content-type: application/json
+            apikey: <Generated Open API key>
+            project: <project>
+
+    + Body
+
+            {
+                "parentFolderId": "541",
+                "isAutomatedFlag": false,
+                "name": "Testsuite Summary",
+                "description": "desc",
+                "owner": 3,
+                "testSuiteState": 21746
+            }
+
++ Response 200
+
+    + Body
+
+            {"ENTITY_KEY":"DPF-TS-31","id":174367,"success":true,"code":"TS.ADD_TS_SUCCESS","message":"New test suite Entitykey created successfully.","data":[{"ENTITY_KEY":"DPF-TS-31","id":174367}]}
+
++ Response 400
+
+    + Body
+
+            {"success":false,"code":"CO.MANDATORY_FIELDS_MISSING","data":[{"MISSING_FIELDS":",","PROJECT_NAME":"CodeSnippets","RESOURCE_TYPE":"TESTSUITE"}]}
+
++ Response 401
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.INVALID_API_KEY"
+            }
+
++ Response 500
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.GENERAL_EXCEPTION"
+            }
+
+## Create/Update [/rest/testsuites]
+### CreateDelete [POST]
+API to create testsuite
+
+**Request Body Insight**
+
+| Parameters|Description|Required|
+|-----------|:---------|:-------|
+|parentFolderId|Parent folderId of Test Suites|Yes|
+|isAutomatedFlag|Default value false|No|
+|name|Summary of Test Suites|Yes|
+|description|Description of Test Suites|No|
+|owner|Owner of Test Suites|No|
+|testSuiteState|Status of Test Suites|No|
+
+<br><br> **NOTE:**
+<ul>
+    <li><font size="3">To get the parentFolderId | Call API 'Testsuite/List of folders'
+        <ul>
+            <li><font size="3">From the response, get value of following attribute -> data[&#x3C;index&#x3E;].id </li>
+        </ul>
+    </li>
+    <li><font size="3">To get the owner | Call API 'Admin/Get info Service'
+        <ul>
+            <li><font size="3">From the response, get value of following attribute -> customListObjs.owner[&#x3C;index&#x3E;].id </li>
+        </ul>
+    </li>
+    <li><font size="3">To get the testSuiteState | Call API 'Admin/Get info Service'
+        <ul>
+            <li><font size="3">From the response, get value of following attribute -> customListObjs.testSuiteState[&#x3C;index&#x3E;].id </li>
+        </ul>
+    </li>
+</ul>
+
++ Request
+    + Headers
+
+            content-type: application/json
+            apikey: <Generated Open API key>
+            project: <project>
+
+    + Body
+
+            {
+                "parentFolderId": "541",
+                "isAutomatedFlag": false,
+                "name": "Testsuite Summary",
+                "description": "desc",
+                "owner": 3,
+                "testSuiteState": 21746
+            }
+
++ Response 200
+
+    + Body
+
+            {"ENTITY_KEY":"DPF-TS-31","id":174367,"success":true,"code":"TS.ADD_TS_SUCCESS","message":"New test suite Entitykey created successfully.","data":[{"ENTITY_KEY":"DPF-TS-31","id":174367}]}
+
++ Response 400
+
+    + Body
+
+            {"success":false,"code":"CO.MANDATORY_FIELDS_MISSING","data":[{"MISSING_FIELDS":",","PROJECT_NAME":"CodeSnippets","RESOURCE_TYPE":"TESTSUITE"}]}
+
++ Response 401
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.INVALID_API_KEY"
+            }
+
++ Response 500
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.GENERAL_EXCEPTION"
+            }
+
+## Create/Update [/rest/testsuites]
+### CreateDeleteBG [POST]
+API to create testsuite
+
+**Request Body Insight**
+
+| Parameters|Description|Required|
+|-----------|:---------|:-------|
+|parentFolderId|Parent folderId of Test Suites|Yes|
+|isAutomatedFlag|Default value false|No|
+|name|Summary of Test Suites|Yes|
+|description|Description of Test Suites|No|
+|owner|Owner of Test Suites|No|
+|testSuiteState|Status of Test Suites|No|
+
+<br><br> **NOTE:**
+<ul>
+    <li><font size="3">To get the parentFolderId | Call API 'Testsuite/List of folders'
+        <ul>
+            <li><font size="3">From the response, get value of following attribute -> data[&#x3C;index&#x3E;].id </li>
+        </ul>
+    </li>
+    <li><font size="3">To get the owner | Call API 'Admin/Get info Service'
+        <ul>
+            <li><font size="3">From the response, get value of following attribute -> customListObjs.owner[&#x3C;index&#x3E;].id </li>
+        </ul>
+    </li>
+    <li><font size="3">To get the testSuiteState | Call API 'Admin/Get info Service'
+        <ul>
+            <li><font size="3">From the response, get value of following attribute -> customListObjs.testSuiteState[&#x3C;index&#x3E;].id </li>
+        </ul>
+    </li>
+</ul>
+
++ Request
+    + Headers
+
+            content-type: application/json
+            apikey: <Generated Open API key>
+            project: <project>
+
+    + Body
+
+            {
+                "parentFolderId": "541",
+                "isAutomatedFlag": false,
+                "name": "Testsuite Summary",
+                "description": "desc",
+                "owner": 3,
+                "testSuiteState": 21746
+            }
+
++ Response 200
+
+    + Body
+
+            {"ENTITY_KEY":"DPF-TS-31","id":174367,"success":true,"code":"TS.ADD_TS_SUCCESS","message":"New test suite Entitykey created successfully.","data":[{"ENTITY_KEY":"DPF-TS-31","id":174367}]}
+
++ Response 400
+
+    + Body
+
+            {"success":false,"code":"CO.MANDATORY_FIELDS_MISSING","data":[{"MISSING_FIELDS":",","PROJECT_NAME":"CodeSnippets","RESOURCE_TYPE":"TESTSUITE"}]}
+
++ Response 401
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.INVALID_API_KEY"
+            }
+
++ Response 500
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.GENERAL_EXCEPTION"
+            }
+
+## Create/Update [/rest/testsuites]
+### CreateImport [POST]
+API to create testsuite
+
+**Request Body Insight**
+
+| Parameters|Description|Required|
+|-----------|:---------|:-------|
+|parentFolderId|Parent folderId of Test Suites|Yes|
+|isAutomatedFlag|Default value false|No|
+|name|Summary of Test Suites|Yes|
+|description|Description of Test Suites|No|
+|owner|Owner of Test Suites|No|
+|testSuiteState|Status of Test Suites|No|
+
+<br><br> **NOTE:**
+<ul>
+    <li><font size="3">To get the parentFolderId | Call API 'Testsuite/List of folders'
+        <ul>
+            <li><font size="3">From the response, get value of following attribute -> data[&#x3C;index&#x3E;].id </li>
+        </ul>
+    </li>
+    <li><font size="3">To get the owner | Call API 'Admin/Get info Service'
+        <ul>
+            <li><font size="3">From the response, get value of following attribute -> customListObjs.owner[&#x3C;index&#x3E;].id </li>
+        </ul>
+    </li>
+    <li><font size="3">To get the testSuiteState | Call API 'Admin/Get info Service'
+        <ul>
+            <li><font size="3">From the response, get value of following attribute -> customListObjs.testSuiteState[&#x3C;index&#x3E;].id </li>
+        </ul>
+    </li>
+</ul>
+
++ Request
+    + Headers
+
+            content-type: application/json
+            apikey: <Generated Open API key>
+            project: <project>
+
+    + Body
+
+            {
+                "parentFolderId": "541",
+                "isAutomatedFlag": false,
+                "name": "Testsuite Summary",
+                "description": "desc",
+                "owner": 3,
+                "testSuiteState": 21746
+            }
+
++ Response 200
+
+    + Body
+
+            {"ENTITY_KEY":"DPF-TS-31","id":174367,"success":true,"code":"TS.ADD_TS_SUCCESS","message":"New test suite Entitykey created successfully.","data":[{"ENTITY_KEY":"DPF-TS-31","id":174367}]}
+
++ Response 400
+
+    + Body
+
+            {"success":false,"code":"CO.MANDATORY_FIELDS_MISSING","data":[{"MISSING_FIELDS":",","PROJECT_NAME":"CodeSnippets","RESOURCE_TYPE":"TESTSUITE"}]}
+
++ Response 401
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.INVALID_API_KEY"
+            }
+
++ Response 500
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.GENERAL_EXCEPTION"
+            }            
+
+## Add Scope [/rest/testsuites/mapReleaseCycle]
+### Add [POST]
+Link Release & Cycle to Testsuite
+
+**Request Body Insight**
+
+| Parameters|Description|Required|
+|-----------|:---------|:-------|
+|data|An array of Data - Refer JSON Schema|Yes|
+
+<br><br> **NOTE:**
+<ul>
+    <li><font size="3">To get the tsID - Call API 'Testsuite/Fetch Testsuites'
+        <ul>
+            <li><font size="3">From the response, get value of following attribute -> data[&#x3C;index&#x3E;].tsID </li>
+        </ul>
+    </li>
+    <li><font size="3">To get the releaseId - Call API 'Release/List'
+        <ul>
+            <li><font size="3">From the response, get value of following attribute -> data[&#x3C;index&#x3E;].releaseID </li>
+        </ul>
+    </li>
+    <li><font size="3">To get the buildID- Call API 'Cycle/List'
+        <ul>
+            <li><font size="3">From the response, get value of following attribute -> data[&#x3C;index&#x3E;].buildID </li>
+        </ul>
+    </li>
+</ul>
+
++ Request
+    + Headers
+
+            content-type: application/json
+            apikey: <Generated Open API key>
+            project: <project>
+
+    + Body
+
+            {
+              "data": [
+                {
+                  "tsId": 92091,
+                  "buildID": 5391,
+                  "releaseId": 2596
+                }
+              ]
+            }
+
+    + Schema
+
+            "Data" :{
+              "type": "object",
+              "required": [
+                "buildID",
+                "releaseId",
+                "tsId"
+              ],
+              "properties": {
+                "tsId": {
+                  "type": "integer",
+                  "format": "int32",
+                  "description": "Id of Test Suites"
+                },
+                "buildID": {
+                  "type": "integer",
+                  "format": "int32",
+                  "description": "Id of Build(Cycle)"
+                },
+                "releaseId": {
+                  "type": "integer",
+                  "format": "int32",
+                  "description": "Id of Release"
+                }
+              }
+            }
+
++ Response 200
+
+    + Body
+
+            {
+                "success":"true"
+            }
+
++ Response 400
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.GENERAL_EXCEPTION"
+            }
+
++ Response 401
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.INVALID_API_KEY"
+            }
+
++ Response 500
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.GENERAL_EXCEPTION"
+            }
+
+## Create/Update [/rest/testsuites]
+### CreateOps [POST]
+API to create testsuite
+
+**Request Body Insight**
+
+| Parameters|Description|Required|
+|-----------|:---------|:-------|
+|parentFolderId|Parent folderId of Test Suites|Yes|
+|isAutomatedFlag|Default value false|No|
+|name|Summary of Test Suites|Yes|
+|description|Description of Test Suites|No|
+|owner|Owner of Test Suites|No|
+|testSuiteState|Status of Test Suites|No|
+
+<br><br> **NOTE:**
+<ul>
+    <li><font size="3">To get the parentFolderId | Call API 'Testsuite/List of folders'
+        <ul>
+            <li><font size="3">From the response, get value of following attribute -> data[&#x3C;index&#x3E;].id </li>
+        </ul>
+    </li>
+    <li><font size="3">To get the owner | Call API 'Admin/Get info Service'
+        <ul>
+            <li><font size="3">From the response, get value of following attribute -> customListObjs.owner[&#x3C;index&#x3E;].id </li>
+        </ul>
+    </li>
+    <li><font size="3">To get the testSuiteState | Call API 'Admin/Get info Service'
+        <ul>
+            <li><font size="3">From the response, get value of following attribute -> customListObjs.testSuiteState[&#x3C;index&#x3E;].id </li>
+        </ul>
+    </li>
+</ul>
+
++ Request
+    + Headers
+
+            content-type: application/json
+            apikey: <Generated Open API key>
+            project: <project>
+
+    + Body
+
+            {
+                "parentFolderId": "541",
+                "isAutomatedFlag": false,
+                "name": "Testsuite Summary",
+                "description": "desc",
+                "owner": 3,
+                "testSuiteState": 21746
+            }
+
++ Response 200
+
+    + Body
+
+            {"ENTITY_KEY":"DPF-TS-31","id":174367,"success":true,"code":"TS.ADD_TS_SUCCESS","message":"New test suite Entitykey created successfully.","data":[{"ENTITY_KEY":"DPF-TS-31","id":174367}]}
+
++ Response 400
+
+    + Body
+
+            {"success":false,"code":"CO.MANDATORY_FIELDS_MISSING","data":[{"MISSING_FIELDS":",","PROJECT_NAME":"CodeSnippets","RESOURCE_TYPE":"TESTSUITE"}]}
+
++ Response 401
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.INVALID_API_KEY"
+            }
+
++ Response 500
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.GENERAL_EXCEPTION"
+            }            
+
+## Link Platforms [/rest/testsuites/link/platforms]
+### Link [PUT]
+
+**Request Body Insight**
+
+| Parameters|Description|Required|
+|-----------|:---------|:-------|
+|qmTsId|Id of Test Suites|Yes|
+|qmPlatformId|Comma-separated value of PlatformId|Yes|
+
+<br><br> **NOTE:**
+<ul>
+    <li><font size="3">To get the qmTsId - Call API 'Testsuite/Fetch Testsuites'
+        <ul>
+            <li><font size="3">From the response, get value of following attribute -> data[&#x3C;index&#x3E;].tsID </li>
+        </ul>
+    </li>
+    <li><font size="3">To get the qmPlatformId - Call API 'Platform/List'
+        <ul>
+            <li><font size="3">From the response, get value of following attribute -> data[&#x3C;index&#x3E;].platformID </li>
+        </ul>
+    </li>
+</ul>
+
++ Request
+    + Headers
+
+            content-type: application/json
+            apikey: <Generated Open API key>
+            project: <project>
+
+    + Body
+
+             {
+                 "qmTsId" : 92091,
+                 "qmPlatformId" : 2910
+             }
+
++ Response 200
+
+    + Body
+
+            {"success":true,"code":"TS.LINK_PLATFORM_SUCCESS","data":[{"COUNT":0}]}
+
++ Response 400
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.GENERAL_EXCEPTION"
+            }
+
++ Response 401
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.INVALID_API_KEY"
+            }
+
++ Response 500
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.GENERAL_EXCEPTION"
+            }
+
+
+## Add Scope [/rest/testsuites/mapReleaseCycle]
+### AddOps [POST]
+Link Release & Cycle to Testsuite
+
+**Request Body Insight**
+
+| Parameters|Description|Required|
+|-----------|:---------|:-------|
+|data|An array of Data - Refer JSON Schema|Yes|
+
+<br><br> **NOTE:**
+<ul>
+    <li><font size="3">To get the tsID - Call API 'Testsuite/Fetch Testsuites'
+        <ul>
+            <li><font size="3">From the response, get value of following attribute -> data[&#x3C;index&#x3E;].tsID </li>
+        </ul>
+    </li>
+    <li><font size="3">To get the releaseId - Call API 'Release/List'
+        <ul>
+            <li><font size="3">From the response, get value of following attribute -> data[&#x3C;index&#x3E;].releaseID </li>
+        </ul>
+    </li>
+    <li><font size="3">To get the buildID- Call API 'Cycle/List'
+        <ul>
+            <li><font size="3">From the response, get value of following attribute -> data[&#x3C;index&#x3E;].buildID </li>
+        </ul>
+    </li>
+</ul>
+
++ Request
+    + Headers
+
+            content-type: application/json
+            apikey: <Generated Open API key>
+            project: <project>
+
+    + Body
+
+            {
+              "data": [
+                {
+                  "tsId": 92091,
+                  "buildID": 5391,
+                  "releaseId": 2596
+                }
+              ]
+            }
+
+    + Schema
+
+            "Data" :{
+              "type": "object",
+              "required": [
+                "buildID",
+                "releaseId",
+                "tsId"
+              ],
+              "properties": {
+                "tsId": {
+                  "type": "integer",
+                  "format": "int32",
+                  "description": "Id of Test Suites"
+                },
+                "buildID": {
+                  "type": "integer",
+                  "format": "int32",
+                  "description": "Id of Build(Cycle)"
+                },
+                "releaseId": {
+                  "type": "integer",
+                  "format": "int32",
+                  "description": "Id of Release"
+                }
+              }
+            }
+
++ Response 200
+
+    + Body
+
+            {
+                "success":"true"
+            }
+
++ Response 400
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.GENERAL_EXCEPTION"
+            }
+
++ Response 401
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.INVALID_API_KEY"
+            }
+
++ Response 500
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.GENERAL_EXCEPTION"
+            }
+
+## Link Testcase [/rest/testsuites/dolink/TCs]
+### LinkOps [PUT]
+
+**Request Body Insight**
+
+| Parameters|Description|Required|
+|-----------|:---------|:-------|
+|tsID|Id of Testsuite|Yes|
+|tcvdIDs|Testcase Version ID|Yes|
+
+
+<br><br> **NOTE:**
+<ul> 
+    <li><font size="3">To get the tsID - Call API 'Testsuite/Fetch Testsuites'
+        <ul>
+            <li><font size="3">From the response, get value of following attribute -> data[&#x3C;index&#x3E;].tsID </li>
+        </ul>
+    </li>
+    <li><font size="3">To get the tcvdIDs - Call API 'Testcase/Fetch Versions Detail'
+        <ul>
+            <li><font size="3">From the response, get value of following attribute -> data[&#x3C;index&#x3E;].tcVersionID </li>
+        </ul>
+    </li>
+</ul>
+
++ Request
+    + Headers
+
+            content-type: application/json
+            apikey: <Generated Open API key>
+            project: <project>
+
+    + Body
+
+            {
+              "tsID": 63508,
+              "tcvdIDs": [
+                4088491
+              ],
+              "gridValues": [
+                []
+              ]
+            }
+
++ Response 200
+
+    + Body
+
+            {
+              "COUNT": 1,
+              "success": true,
+              "code": "CO.LINK_ENTITY_SUCCESS",
+              "message": "Selected entities linked successfully.",
+              "data": [
+                {
+                  "COUNT": 1
+                }
+              ]
+            }
+
++ Response 400
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.GENERAL_EXCEPTION"
+            }
+
++ Response 401
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.INVALID_API_KEY"
+            }
+
++ Response 500
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.GENERAL_EXCEPTION"
+            }
+
+
+# Group Execution
+
+## Fetch Executions [/rest/execution/list/platformHome]
+### Get List [POST]
+API to list executions of a given testsuite
+
+**Request Body Insight**
+
+| Parameters|Description|Required|
+|-----------|:---------|:-------|
+|tsFolderID|Testsuite folder Id|Yes|
+|tsID|Testsuite ID|Yes|
+|start|Start index of records|No|
+|limit|Number of records per page|No|
+|page|Page number to be displayed|No|
+
+<br><br> **NOTE:**
+<ul>
+    <li><font size="3">To get the tsFolderID | Call API 'Testsuite/List of folders'
+        <ul>
+            <li><font size="3">From the response, get value of following attribute -> data[&#x3C;index&#x3E;].id </li>
+        </ul>
+    </li>
+    <li><font size="3">To get the tsID - Call API 'Testsuite/Fetch Testsuites'
+        <ul>
+            <li><font size="3">From the response, get value of following attribute -> data[&#x3C;index&#x3E;].tsID </li>
+        </ul>
+    </li>
+</ul>
+
++ Request
+    + Headers
+
+            content-type: application/json
+            apikey: <Generated Open API key>
+            project: <project>
+
+    + Body
+
+            {
+                "tsFolderID": 49581,
+                "tsID": 92091,
+                "start": 0,
+                "limit": 50,
+                "page": 1
+            }
+
++ Response 200
+
+    + Body
+
+            {"data":[{"isAutomatedFlag":false,"releaseEndDate":"01-10-2019 01:00:00","PlatformId":3110,"Platform":"chrome","TestSuiteName":"Testsuite gemal926376","tsRunID":136021,"tsID":92091,"isTestRun":true,"startTime":"10-16-2018 04:40:28","isPlatformArchived":false,"cycleName":"Default Cycle 3dzd6ydkl0c","releaseName":"Realease 3dzd6ydkl0c","cycleID":7017,"releaseID":3606,"entityKey":"COD-TS-7","TestSuitePath":"/CodeSnippets","totalTCWithExecutionTime":1,"totalExecutionTime":0,"RemainingTime":1,"Total":1,"isCycleArchived":false,"isReleaseArchived":false,"state":1,"status_7415":0,"status_7410":0,"status_7414":0,"status_7411":1,"status_7409":0,"status_7412":0,"Status":"Not Run","statusID":7411,"Defects":1,"createdDate":"10-16-2018 02:35:28","createdByAlias":"Nidhi"}],"total":1}
+
++ Response 400
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.GENERAL_EXCEPTION"
+            }
+
++ Response 401
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.INVALID_API_KEY"
+            }
+
++ Response 500
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.GENERAL_EXCEPTION"
+            }
+
+## Fetch Testcase Run IDs [/rest/execution/list/tcr]
+### Get List [POST]
+To get list of test run under execution
+
+**Request Body Insight**
+
+| Parameters|Description|Required|
+|-----------|:---------|:-------|
+|tsrID|ID of Testsuite Run whose Testcase Runs are to be obtained|Yes|
+|filter|Add filter to get filtered Testcase Runs - Refer JSON Schema|No|
+|showTcWithDefects|True to get only those Testcase Runs which have Defects linked with them|No|
+|start|Start index of records|No|
+|limit|Number of records per page|No|
+|page|Page number to be displayed|No|
+
+<br><br> **NOTE:**
+<ul>
+    <li><font size="3">To get the tsrID - Call API - 'Execution/Fetch Executions'
+        <ul>
+            <li><font size="3">From the response, get value of following attribute -> data[&#x3C;index&#x3E;].tsRunID </li>
+        </ul>
+    </li>
+</ul>
+
++ Request
+    + Headers
+
+            content-type: application/json
+            apikey: <Generated Open API key>
+            project: <project>
+
+    + Body
+
+             {
+                 "tsrID" : 136021,
+                 "filter" : "[{\"value\":[0,1],\"type\":\"list\",\"field\":\"isArchived\"}]",
+                 "showTcWithDefects" : false,
+                 "start" : 0,
+                 "limit" : 50,
+                 "page" : 1
+             }
+
+    + Schema
+
+            "Filter" : {
+                  "type" : "object",
+                  "properties" : {
+                    "value" : {
+                      "type" : "object"
+                    },
+                    "comparison" : {
+                      "type" : "string"
+                    },
+                    "type" : {
+                      "type" : "string"
+                    },
+                    "field" : {
+                      "type" : "string"
+                    }
+                  }
+                }
+
++ Response 200
+
+    + Body
+
+            {"data":[{"projectID":1098,"defects":"COD-IS-10:106761,COD-IS-11:115165","TS_name":"Testsuite gemal926376","tsDescription":"Description","cycleName":"Default Cycle 3dzd6ydkl0c","releaseName":"Realease 3dzd6ydkl0c","tcVersionID":1002867,"attachmentCount":0,"testCaseType":122598,"testCaseTypeAlias":"BVT","tsRunID":136021,"tcRunID":1254205,"hasRows":0,"orderId":1,"owner":3,"ownerAlias":"kunal","tcID":590091,"tctsID":941715,"stepCount":2,"isArchived":false,"logCount":0,"executionTime":1,"domain":0,"Status":7411,"StatusName":"co-notrun-ico","StatusNameText":"Not Run","executedVersion":1,"tcDescription":"Description","name":"Testcase Create w4yxojrl37e","entityKey":"COD-TC-32","latestVersion":1,"Component":"Not Available","priority":122587,"priorityAlias":"Blocker","PlatformID":3110,"Platform_Name":"chrome","TC_Status":"Not Run","isAutoExecuted":0,"isPlatformArchived":false,"tsEntityKey":"COD-TS-7","state":1}],"total":1,"lastExecDrop":"","lastExecDropAlias":"","state":"1","Defects":"2"}
+
++ Response 400
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.GENERAL_EXCEPTION"
+            }
+
++ Response 401
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.INVALID_API_KEY"
+            }
+
++ Response 500
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.GENERAL_EXCEPTION"
+            }
+
+## Fetch Teststeprun [/rest/execution/tcStepRun/list/viewColumns]
+### Get List [POST]
+
+**Request Body Insight**
+
+|Parameters|Description|Required|
+|-----------|:---------|:-------|
+|tcrID|Id of testcase run|Yes|
+|scope|Default value is 'cycle'|No|
+|viewId|Get viewId of testcase step|Yes|
+|start|Start index of records|No|
+|limit|Number of records per page|No|
+|page|Page number to be displayed|No|
+
+<br><br> **NOTE:**
+<ul> 
+    <li><font size="3">To get the tcrID - Call API - 'Execution/Fetch Testcase Run IDs'
+        <ul>
+            <li><font size="3">From the response, get value of following attribute -> data[&#x3C;index&#x3E;].tcRunID </li>
+        </ul>
+    </li>
+    <li><font size="3">To get viewId - Call API 'Admin/Get info Service'
+        <ul>
+            <li><font size="3">From the response, get value of following attribute -> latestViews.TCS.viewId </li>
+        </ul>
+    </li>
+</ul>
+
++ Request
+    + Headers
+
+            content-type: application/json
+            apikey: <Generated Open API key>
+            project: <project>
+            
+    + Body 
+
+            {
+              "tcrID": 1121218,
+              "scope": "cycle",
+              "viewId": 7565,
+              "start": 0,
+              "limit": 50,
+              "page": 1
+            }
+
++ Response 200
+
+    + Body
+    
+            {"data":[{"tsRunID":59706,"tcID":3878820,"tcRunID":1121218,"isArchived":false,"tcStepRunID":2729219,"stepNo":1,"runStatusID":41728,"logCount":0,"runStatus":"Not Run","description":"Step 22","expectedOutcome":"Outcome 22","inputData":"Input 22","isShared":false,"tcVersion":1,"entityKeyId":2,"projectID":5854,"entityKey":"PAR-TC-2","defects":"PAR-IS-3:149352","linkedStepDfCount":1,"isTcArchived":false},{"tsRunID":59706,"tcID":3878820,"tcRunID":1121218,"isArchived":false,"tcStepRunID":2729220,"stepNo":2,"runStatusID":41728,"logCount":0,"runStatus":"Not Run","description":"Step3","expectedOutcome":"Outcome 3","inputData":"Input 3","isShared":false,"tcVersion":1,"entityKeyId":2,"projectID":5854,"entityKey":"PAR-TC-2","linkedStepDfCount":0,"isTcArchived":false}],"total":2,"viewId":7565,"filter":"[]","viewName":"Default","filterTemplate":[{"displayName":"Step Description","field":"description","fieldType":"string","isUDF":false},{"displayName":"Input Data","field":"inputData","fieldType":"string","isUDF":false},{"displayName":"Expected Outcome","field":"expectedOutcome","fieldType":"string","isUDF":false},{"displayName":"Actual Outcome","field":"actualResult","fieldType":"string","isUDF":false},{"displayName":"Status","field":"Status","fieldType":"numeric","isUDF":false},{"displayName":"Comment","field":"comment","fieldType":"string","isUDF":false},{"displayName":"issueLinking","field":"defects","fieldType":"string","isUDF":false},{"displayName":"attachment","field":"logCount","fieldType":"numeric","isUDF":false},{"displayName":"orderId","field":"orderId","fieldType":"numeric","isUDF":false},{"displayName":"value","field":"value","fieldType":"string","isUDF":false}],"columns":{"visibleColumns":[{"displayName":"Step No","field":"stepNo","isSysField":true,"isUDF":false,"order":1,"width":"150"},{"displayName":"Step Description","field":"description","isUDF":false,"isSysField":true,"order":2,"width":"150"},{"displayName":"Input Data","field":"inputData","isUDF":false,"isSysField":true,"order":3,"width":"150"},{"displayName":"Expected Outcome","field":"expectedOutcome","isUDF":false,"isSysField":true,"order":4,"width":"150"},{"displayName":"Actual Outcome","field":"actualResult","isUDF":false,"isSysField":true,"order":5,"width":"150"},{"displayName":"Execution Status","field":"Status","isUDF":false,"isSysField":true,"order":6,"width":"150"},{"displayName":"Comment","field":"comment","isUDF":false,"isSysField":true,"order":7,"width":"150"},{"displayName":"Linked Attachment Count","field":"logCount","isUDF":false,"isSysField":true,"order":8,"width":"250"},{"displayName":"Linked Issue Count","field":"linkedStepDfCount","isSysField":true,"isUDF":false,"order":9,"width":"150"}],"hiddenColumns":[{"displayName":"Total Execution Time","field":"totalExecutionTime","isUDF":false,"order":10,"width":"150"},{"displayName":"Error Message","field":"errorMsg","isUDF":false,"order":11,"width":"150"},{"displayName":"Trace","field":"trace","isUDF":false,"order":12,"width":"150"},{"displayName":"Entity Key","field":"entityKey","isUDF":false,"order":13,"width":"150"}]}}                    
+
++ Response 400
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.GENERAL_EXCEPTION"
+            }
+            
++ Response 401
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.INVALID_API_KEY"
+            }
+
++ Response 500
+
+    + Body
+
+            {
+              "success": false,
+              "code": "CO.GENERAL_EXCEPTION"
+            }
