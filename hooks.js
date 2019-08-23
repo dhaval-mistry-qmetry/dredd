@@ -144,7 +144,7 @@ hooks.beforeEach(function (transaction) {
 });
 
 hooks.afterEach(function (transaction) {  
-  //hooks.log(transaction.request.uri + " : " + transaction.real.body);
+  hooks.log(transaction.request.uri + " : " + transaction.real.body);
   var obj = {
     'body': transaction.real.body,
     'uri': transaction.request.uri
