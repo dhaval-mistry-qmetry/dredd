@@ -1,6 +1,8 @@
 const hooks = require('hooks');
 const fs = require('fs');
 const Multipart = require('multi-part'); //npm install multi-part --save
+const async = require('async');
+
 const streamToString = require('stream-to-string');
 const PropertiesReader = require('properties-reader');  //npm install properties-reader --save
 var properties = new PropertiesReader('./Prescript/development.properties');
@@ -1041,9 +1043,13 @@ hooks.before("Issue > Fetch Executions For Issue > Get List", function (transact
 // ********************** Attachment **********************
 // ********************************************************
 
-hooks.before("Attachment > Upload File > Upload", function (transaction) {
+hooks.before("Attachment > Upload File > Upload", async function (transaction, done) {
   hooks.log("before Attachment > Upload File > Upload");
-  
+  const form = new Multipart(); 
+  form.append('file', fs.createReadStream(demoFileForAttachment));
+  transaction.request.body = await streamToString(form.getStream());
+  transaction.request.headers['Content-Type'] = form.getHeaders()['content-type'];  
+  done();
 });
 
 hooks.after("Attachment > Upload File > Upload", function (transaction) {
@@ -1088,7 +1094,7 @@ hooks.before("Attachment > Attach logs to TC Run > Upload", async function (tran
   form.append('entityId', issueTestcaseRunId);
   form.append('type', "TCR");
   form.append('file[]', fs.createReadStream(demoFileForAttachment));
-  transaction.request.body = streamToString(form.getStream());
+  transaction.request.body = await streamToString(form.getStream());
   transaction.request.headers['Content-Type'] = form.getHeaders()['content-type'];
   done();
 });
@@ -1156,7 +1162,7 @@ hooks.before("Import > Import Results > Import Result file", async function (tra
   form.append('projectID', projectId);
   form.append('releaseID', rqLinkReleaseId);
   form.append('buildID', dropId);
-  transaction.request.body = streamToString(form.getStream());
+  transaction.request.body = await streamToString(form.getStream());
   transaction.request.headers['Content-Type'] = form.getHeaders()['content-type'];
   done();
 });
